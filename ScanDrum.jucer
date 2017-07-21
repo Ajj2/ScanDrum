@@ -4,16 +4,15 @@
               bundleIdentifier="com.yourcompany.ScanDrum" includeBinaryInAppConfig="1"
               jucerVersion="4.3.1">
   <MAINGROUP id="XatUTH" name="ScanDrum">
-    <GROUP id="{10F90A45-0C0E-E7D0-DEF8-B3B22D1BC8B3}" name="Dylibs">
-      <FILE id="R5WQD2" name="libopencv_core.dylib" compile="0" resource="1"
-            file="/opt/local/lib/libopencv_core.dylib"/>
-      <FILE id="neacmK" name="libopencv_highgui.dylib" compile="0" resource="1"
-            file="/opt/local/lib/libopencv_highgui.dylib"/>
-      <FILE id="SpfLtx" name="libopencv_imgproc.dylib" compile="0" resource="1"
-            file="/opt/local/lib/libopencv_imgproc.dylib"/>
-      <FILE id="sU76TX" name="libLeap.dylib" compile="0" resource="1" file="../../../../../SDKs/LeapSDK/lib/libLeap.dylib"/>
-      <FILE id="nf8DJ2" name="libaubio.5.2.6.dylib" compile="0" resource="1"
-            file="/usr/local/Cellar/aubio/0.4.5/lib/libaubio.5.2.6.dylib"/>
+    <GROUP id="{50929940-B517-5B9C-43A8-0B791FAFDC11}" name="Audio">
+      <FILE id="Ahg8cS" name="AudioUtils.cpp" compile="1" resource="0" file="Source/Audio/AudioUtils.cpp"/>
+      <FILE id="KW4p31" name="AudioUtils.h" compile="0" resource="0" file="Source/Audio/AudioUtils.h"/>
+      <FILE id="XPj9Ih" name="Mixer.cpp" compile="1" resource="0" file="Source/Audio/Mixer.cpp"/>
+      <FILE id="GOj6vi" name="Mixer.h" compile="0" resource="0" file="Source/Audio/Mixer.h"/>
+      <FILE id="HMYQKH" name="Oscillator.cpp" compile="1" resource="0" file="Source/Audio/Oscillator.cpp"/>
+      <FILE id="FPkZCD" name="Oscillator.h" compile="0" resource="0" file="Source/Audio/Oscillator.h"/>
+      <FILE id="Yw2oHd" name="VarDelay.cpp" compile="1" resource="0" file="Source/Audio/VarDelay.cpp"/>
+      <FILE id="D8vho1" name="VarDelay.h" compile="0" resource="0" file="Source/Audio/VarDelay.h"/>
     </GROUP>
     <GROUP id="{448A1E1D-5526-F9D2-74EC-679EBEE0628C}" name="Leap">
       <FILE id="tnOagG" name="LeapM.cpp" compile="1" resource="0" file="Source/Leap/LeapM.cpp"/>
@@ -34,10 +33,10 @@
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="ScanDrum"
                        headerPath="../../Libs/LeapSDK/include&#10;../../Libs&#10;/usr/local/include&#10;/usr/local/Cellar/aubio/include&#10;"
-                       libraryPath="/opt/local/lib&#10;/usr/local/lib&#10;../../Libs&#10;../../Libs/LeapSDK/lib"/>
+                       libraryPath="/opt/local/lib&#10;/usr/local/lib&#10;../../Libs&#10;../../Libs/LeapSDK/lib&#10;../../Libs/LeapSDK/lib&#10;"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="ScanDrum"
-                       headerPath="../../Libs/LeapSDK/include&#10;../../Libs&#10;usr/local/include"
-                       libraryPath="/opt/local/lib&#10;/usr/local/lib&#10;../../Libs"/>
+                       headerPath="../../Libs/LeapSDK/include&#10;../../Libs&#10;/usr/local/include&#10;/usr/local/Cellar/aubio/include&#10;"
+                       libraryPath="/opt/local/lib&#10;/usr/local/lib&#10;../../Libs&#10;../../Libs/LeapSDK/lib"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_core" path="../../../../../JUCE/modules"/>

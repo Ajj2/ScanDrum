@@ -14,6 +14,9 @@
 #include "LeapM.h"
 #include <aubio/aubio.h>
 #include "Stk.h"
+#include "VarDelay.h"
+#include "Mixer.h"
+#include "AudioUtils.h"
 
 //==============================================================================
 
@@ -22,7 +25,7 @@ class MainContentComponent   : public AudioAppComponent,
 {
 public:
     //==============================================================================
-    MainContentComponent()
+    MainContentComponent() : varDelay (1), mixer (1)
     {
         osc = new Osc;
         leapM = new LeapM (*osc);
@@ -55,11 +58,34 @@ public:
         
         sine.reset();
         sine.setRate((float)sampleRate/(float)samplesPerBlockExpected);
-        sine.setFrequency(500);
+        sine.setFrequency(1000);
         
-        coeff = IIRCoefficients::makeLowPass(sampleRate, 400);
+        //env.setRate((float)sampleRate/(float)samplesPerBlockExpected);
+        //env.setValue(0);
+        
+        env.initialise(sampleRate);
+        env.set(Envelope::Points(0, 0)(1, 1)(2, 0), sampleRate);
+        
+        coeff = IIRCoefficients::makeHighPass(sampleRate, 200);
         filter.setCoefficients(coeff);
         filter.reset();
+        
+        varDelay.prepareToPlay(samplesPerBlockExpected, sampleRate);
+        varDelay.setOutGain(1);
+        varDelay.setModWaveShape(VarDelay::sine);
+        varDelay.setParameter(VarDelay::delayTimeP, 0.02);
+        varDelay.setParameter(VarDelay::feedbackP, 0.9);
+        varDelay.setParameter(VarDelay::mixP, 0.8);
+        varDelay.setParameter(VarDelay::modSpeedP, 0.1);
+        varDelay.setParameter(VarDelay::modDepthP, 0.8);
+        
+//        mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
+//        mixer.setInputGain(1);
+//        mixer.setDelayParameter(0, VarDelay::delayTimeP, 0.001);
+//        mixer.setDelayParameter(0, VarDelay::feedbackP, 0.9);
+//        mixer.setDelayParameter(0, VarDelay::mixP, 0.8);
+//        mixer.setDelayParameter(0, VarDelay::modSpeedP, 0.5);
+//        mixer.setDelayParameter(0, VarDelay::modDepthP, 0.8);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -93,10 +119,13 @@ public:
 //            *outP = data;
             
             *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5;
-            *outP = filter.processSingleSampleRaw(*outP);
-            
+            *outP = filter.processSingleSampleRaw(*outP) * env.tick();
+        
             outP++;
         }
+        
+        varDelay.getNextAudioBlock(bufferToFill);
+        //mixer.getNextAudioBlock(bufferToFill);
     }
     
     void releaseResources() override{}
@@ -127,11 +156,15 @@ private:
     aubio_onset_t * onsetDetect;
     
     stk::SineWave sine;
+    Envelope env;
     
     Random myRand;
     
-    IIRFilter filter[2];
-    IIRCoefficients coeff[2];
+    IIRFilter filter;
+    IIRCoefficients coeff;
+    
+    VarDelay varDelay;
+    Mixer mixer;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
