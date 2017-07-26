@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9753BAB27CBEC25C3546F3EDD88AA02F689B33F9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9753BAB27CBEC25C3546F3EDD88AA02F689B33F9" : 0,
+    "40AC036064B28DF7BC3421AE354DC24FA9B45847" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4AB957CA-1973-4EC0-8B88-88B96C1E4645",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9753BAB27CBEC25C3546F3EDD88AA02F689B33F9" : "ScanDrum\/",
+    "40AC036064B28DF7BC3421AE354DC24FA9B45847" : "..\/..\/..\/..\/JUCE\/modules\/stk_wrapper"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ScanDrum",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Builds\/MacOSX\/ScanDrum.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/adamski\/stk_wrapper.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "40AC036064B28DF7BC3421AE354DC24FA9B45847"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Ajj2\/ScanDrum.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9753BAB27CBEC25C3546F3EDD88AA02F689B33F9"
+    }
+  ]
+}

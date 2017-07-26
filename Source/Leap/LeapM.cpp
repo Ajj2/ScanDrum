@@ -26,6 +26,7 @@ LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), sendPosition (0)
     startTimerHz(60);
 }
 
+
 LeapM::~LeapM()
 {
     

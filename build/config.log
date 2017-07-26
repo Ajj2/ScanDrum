@@ -1,0 +1,20 @@
+# project  configured on Tue Jul 25 17:15:32 2017 by
+# waf 1.6.11 (abi 98, python 2070cf0 on linux2)
+# using ./waf configure
+#
+----------------------------------------
+Setting top to
+/home/flo/INFO/Projets/ScanDrum/ScanDrum
+----------------------------------------
+Setting out to
+/home/flo/INFO/Projets/ScanDrum/ScanDrum/build
+----------------------------------------
+Checking for 'g++' (c++ compiler)
+find program=['g++', 'c++'] paths=['/usr/local/bin', '/usr/bin', '/bin', '/usr/local/games', '/usr/games'] var='CXX' -> '/usr/bin/g++'
+find program=['ar'] paths=['/usr/local/bin', '/usr/bin', '/bin', '/usr/local/games', '/usr/games'] var='AR' -> '/usr/bin/ar'
+/usr/bin/g++
+----------------------------------------
+Checking for 'gcc' (c compiler)
+find program=['gcc', 'cc'] paths=['/usr/local/bin', '/usr/bin', '/bin', '/usr/local/games', '/usr/games'] var='CC' -> '/usr/bin/gcc'
+(tool ar is already loaded, skipping)
+/usr/bin/gcc

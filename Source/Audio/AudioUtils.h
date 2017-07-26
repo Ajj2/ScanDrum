@@ -11,7 +11,7 @@
 #ifndef AUDIOUTILS_H_INCLUDED
 #define AUDIOUTILS_H_INCLUDED
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include <JuceHeader.h>
 
 class Envelope : public stk::Envelope
 {
