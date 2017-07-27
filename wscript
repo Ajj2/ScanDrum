@@ -41,7 +41,7 @@ def configure(conf):
                                 '/usr/include/openni2']
         conf.env.LIB_OS = ['X11', 'Xxf86vm', 'm',
                            'opencv_core', 'opencv_highgui', 
-                           'opencv_imgproc','juce','stk','Leap']
+                           'opencv_imgproc','juce','stk','Leap','aubio']
         conf.env.LIBPATH_OS = ['/usr/local/lib/']
         conf.env.DEFINES_OS  = ['POSIX=1','GL42=1', 'LINUX=1']
 
