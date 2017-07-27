@@ -11,6 +11,8 @@
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "Osc.h"
 
+using namespace juce;
+
 //==============================================================================
 Osc::Osc()
 {
@@ -33,11 +35,11 @@ Osc::Osc()
 
 Osc::~Osc(){}
 
-void Osc::oscMessageReceived (const OSCMessage& message)
+void Osc::oscMessageReceived (const juce::OSCMessage& message)
 {
     DBG(message.getAddressPattern().toString() << " --> ");
     
-    if (message.size() == 1 && message[0].getType() == OSCTypes::float32)
+    if (message.size() == 1 && message[0].getType() == juce::OSCTypes::float32)
     {
         DBG (message[0].getFloat32());
     }
@@ -47,7 +49,7 @@ void Osc::oscMessageReceived (const OSCMessage& message)
     }
 }
 
-void Osc::sendOSCMessage (String ap, float val)
+void Osc::sendOSCMessage (juce::String ap, float val)
 {
     sender.send(ap, val);
 }

@@ -10,6 +10,8 @@
 
 #include "VarDelay.h"
 
+using namespace juce;
+
 //==============================================================================
 
 Threshold::Threshold()
@@ -111,19 +113,19 @@ void VarDelay::releaseResources()
     
 }
 
-void VarDelay::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
+void VarDelay::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
 {
     int numSamples = bufferToFill.numSamples;
     float totalNumInputChannels = bufferToFill.buffer->getNumChannels();
     
     //----------------------------------------------------------------------------------------------------
     
-    AudioBuffer<float> inputSampleBuffer[2];
+    juce::AudioBuffer<float> inputSampleBuffer[2];
     
     // Refer the buffer to the scratch buffers, which should be the correct size.
     for (int i = 0; i < 2; i++)
     {
-        inputSampleBuffer[i] = AudioBuffer<float>(scratchBuffer[i].getArrayOfWritePointers(), totalNumInputChannels, numSamples);
+        inputSampleBuffer[i] = juce::AudioBuffer<float>(scratchBuffer[i].getArrayOfWritePointers(), totalNumInputChannels, numSamples);
     }
     
     // Copy the data from the data from the incoming buffer in our buffer.
@@ -370,12 +372,12 @@ float VarDelay::getDelayTime()
     return delayTime.get();
 }
 
-StringArray VarDelay::getParameters()
+juce::StringArray VarDelay::getParameters()
 {
     return parameters;
 }
 
-String VarDelay::getParameterByIndex(int index)
+juce::String VarDelay::getParameterByIndex(int index)
 {
     return parameters[index];
 }
@@ -386,4 +388,3 @@ int VarDelay::getIndexID()
 }
 
 //==============================================================================
-

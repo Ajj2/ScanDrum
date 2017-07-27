@@ -10,6 +10,8 @@
 
 #include "Mixer.h"
 
+using namespace juce;
+
 Mixer::Mixer(const int numDelays)
 {
     for (int i = 0; i < numDelays ; i++)
@@ -38,7 +40,7 @@ void Mixer::prepareToPlay (int samplesPerBlockExpected, double sampleRate)
     
     for (int i = 0 ; i < delays.size(); i++)
     {
-        scratchBuffers.add(AudioBuffer<float>(2, samplesPerBlockExpected));
+        scratchBuffers.add(juce::AudioBuffer<float>(2, samplesPerBlockExpected));
     }
     
     inputGainSmooth.reset(sampleRate / samplesPerBlockExpected, 0.2);
@@ -52,7 +54,7 @@ void Mixer::releaseResources()
     }
 }
 
-void Mixer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
+void Mixer::getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill)
 {
     // -------------------------------------------------------------------------------------------------
     
@@ -62,11 +64,11 @@ void Mixer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
     // There are 2 constants that need to be changed in order to change the number of delays in use. The other is in the private section of Audio.
     const static int numDelayToUse = 1;
     
-    AudioBuffer<float> inputSamples[numDelayToUse];
+    juce::AudioBuffer<float> inputSamples[numDelayToUse];
     
     for (int i = 0; i < numDelayToUse; i++)
     {
-        inputSamples[i] = AudioBuffer<float>(scratchBuffers[i].getArrayOfWritePointers(), totalNumInputChannels, numSamples);
+        inputSamples[i] = juce::AudioBuffer<float>(scratchBuffers[i].getArrayOfWritePointers(), totalNumInputChannels, numSamples);
     }
     
     // Copy the input data to multiple buffers so it can be processed in parallel. The buffers are declared in prepareToPlay to avoid doing memory allocation here
@@ -85,7 +87,7 @@ void Mixer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
         /* -------------------------------------------------------------------------------------------------
          PARALLEL */
         //Convert to AudioSourceChannelInfo, as this is what audio sources accept in the call to getNextAudioBlock.
-        Array<AudioSourceChannelInfo> inputInfos;
+        juce::Array<AudioSourceChannelInfo> inputInfos;
         
         for (int info = 0; info < numDelayToUse; info++)
         {
@@ -97,7 +99,7 @@ void Mixer::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
             delays[i]->getNextAudioBlock(inputInfos[i]);
         }
         
-        AudioBuffer<float> mixedBuffer(scratchMixBuffer.getArrayOfWritePointers(), totalNumInputChannels, numSamples);
+        juce::AudioBuffer<float> mixedBuffer(scratchMixBuffer.getArrayOfWritePointers(), totalNumInputChannels, numSamples);
         mixedBuffer.clear();
         
         for (int i = 0; i < totalNumInputChannels; i++)

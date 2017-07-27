@@ -21,33 +21,33 @@
 //==============================================================================
 /*
 */
-class LeapM    : public Component,
-                 public Timer,
-                 public ActionListener 
+class LeapM    : public juce::Component,
+                 public juce::Timer,
+                 public juce::ActionListener 
 {
 public:
     LeapM(Osc& oscRef_);
     ~LeapM();
 
-    void paint (Graphics&) override;
+    void paint (juce::Graphics&) override;
     void resized() override;
     
     void timerCallback() override;
     
     void sendPositionMessage();
     
-    void actionListenerCallback (const String &message) override;
+    void actionListenerCallback (const juce::String &message) override;
 
 private:
     
     Leap::Controller controller;
     Leap::Frame currentFrame;
     
-    TextEditor textDisplay;
+    juce::TextEditor textDisplay;
     
     Osc& oscRef;
     
-    Atomic<int> sendPosition;
+    juce::Atomic<int> sendPosition;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LeapM)
 };

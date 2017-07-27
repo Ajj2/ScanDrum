@@ -122,7 +122,7 @@ private:
 
 /** VarDelay - This class is a variable delay line, which uses windowing to mitigate the pitch shifting effects normally associated with this techinque. It has some built in modulation. */
 
-class VarDelay : public AudioSource
+class VarDelay : public juce::AudioSource
 {
 public:
     /** An enum that defines the parameters that each delay has.*/
@@ -157,7 +157,7 @@ public:
     /** Allows the source to release anything it no longer needs after playback has stopped.*/
     void releaseResources() override;
     /** Called repeatedly to fetch subsequent blocks of audio data.*/
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     /** Write to a delay line specified by the win and channel arguments. There must be two buffers for every channel
      @param writePos    - an integer that defines the position in the buffer that will be written to.
@@ -215,11 +215,11 @@ public:
     /** Returns a string array of all the parameters that this class has
      @return A StringArray with all the parameter names.
      */
-    StringArray getParameters();
+    juce::StringArray getParameters();
     /** Returns the name of a sinlge parameter used by this delay
      @param index - the index of the parameter to return the name of
      */
-    String getParameterByIndex(int index);
+    juce::String getParameterByIndex(int index);
     
 private:
     int ID;
@@ -228,10 +228,10 @@ private:
     int bufferSize[2], bufferWritePos[2];
     float sR;
     const float maxDelayTime = 2.f;
-    StringArray parameters;
+    juce::StringArray parameters;
     
-    AudioSampleBuffer sampleBuffer[2];
-    AudioBuffer<float> scratchBuffer[2];
+    juce::AudioSampleBuffer sampleBuffer[2];
+    juce::AudioBuffer<float> scratchBuffer[2];
     
     Oscillator* modOsc[2];
     TriangleOsc triOsc[2];
@@ -240,19 +240,19 @@ private:
     SinOsc winOsc[2];
     Threshold threshold[2][2];
     
-    LinearSmoothedValue<float> modValues[2][2];
-    LinearSmoothedValue<float> delWindowValues[2][2];
-    LinearSmoothedValue<float> delTimeSmooth;
-    LinearSmoothedValue<float> outGainSmooth;
+    juce::LinearSmoothedValue<float> modValues[2][2];
+    juce::LinearSmoothedValue<float> delWindowValues[2][2];
+    juce::LinearSmoothedValue<float> delTimeSmooth;
+    juce::LinearSmoothedValue<float> outGainSmooth;
     
-    Atomic<float> delayTime;
-    Atomic<float> feedback;
-    Atomic<float> mix;
-    Atomic<float> modSpeed;
-    Atomic<float> modDepth;
-    Atomic<float> outGain;
+    juce::Atomic<float> delayTime;
+    juce::Atomic<float> feedback;
+    juce::Atomic<float> mix;
+    juce::Atomic<float> modSpeed;
+    juce::Atomic<float> modDepth;
+    juce::Atomic<float> outGain;
     
-    Atomic<float> readableDelayTime;
+    juce::Atomic<float> readableDelayTime;
 };
 
 

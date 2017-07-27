@@ -1,6 +1,9 @@
 #ifndef CURSOR_H
 #define CURSOR_H
 
+#include <string>
+#include <iostream> 
+
 class Cursor {
     private:
         std::string m_name;

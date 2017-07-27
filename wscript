@@ -41,16 +41,23 @@ def configure(conf):
                                 '/usr/include/openni2']
         conf.env.LIB_OS = ['X11', 'Xxf86vm', 'm',
                            'opencv_core', 'opencv_highgui', 
-                           'opencv_imgproc']
+                           'opencv_imgproc','juce','stk','Leap']
         conf.env.LIBPATH_OS = ['/usr/local/lib/']
         conf.env.DEFINES_OS  = ['POSIX=1','GL42=1', 'LINUX=1']
 
-    conf.env.INCLUDES=['/usr/include/juce/modules','JuceLibraryCode']
+    conf.env.INCLUDES=['/usr/include/juce/modules', 
+                      'JuceLibraryCode', 
+                      '/usr/include/Leap', 
+                      'JuceLibraryCode/stk/include', 
+                      'Source/Audio',
+                      'Source/Cursor',
+                      'Source/Leap',
+                      'Source/Osc']
    
     #release specific
     #conf.env.CXXFLAGS = ['-O3', '-Wall'] 
     conf.env.CXXFLAGS = ['-O3', '-std=c++0x'] 
-    conf.env.DEFINES  = ['DEBUG(x)=//x']
+    conf.env.DEFINES  = ['DEBUG(x)=//x', 'DONT_SET_USING_JUCE_NAMESPACE=1']
 
     #debug specific
     conf.setenv('debug', env=conf.env.derive())

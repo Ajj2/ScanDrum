@@ -18,6 +18,8 @@
 #include "Mixer.h"
 #include "AudioUtils.h"
 
+using namespace juce;
+
 //==============================================================================
 
 class MainContentComponent   : public AudioAppComponent,

@@ -10,21 +10,21 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-Component* createMainContentComponent();
+juce::Component* createMainContentComponent();
 
 //==============================================================================
-class ScanDrumApplication  : public JUCEApplication
+class ScanDrumApplication  : public juce::JUCEApplication
 {
 public:
     //==============================================================================
     ScanDrumApplication() {}
 
-    const String getApplicationName() override       { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override    { return ProjectInfo::versionString; }
+    const juce::String getApplicationName() override       { return ProjectInfo::projectName; }
+    const juce::String getApplicationVersion() override    { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override       { return true; }
 
     //==============================================================================
-    void initialise (const String& commandLine) override
+    void initialise (const juce::String& commandLine) override
     {
         // This method is where you should put your application's initialisation code..
 
@@ -46,7 +46,7 @@ public:
         quit();
     }
 
-    void anotherInstanceStarted (const String& commandLine) override
+    void anotherInstanceStarted (const juce::String& commandLine) override
     {
         // When another instance of the app is launched while this one is running,
         // this method is invoked, and the commandLine parameter tells you what
@@ -58,12 +58,12 @@ public:
         This class implements the desktop window that contains an instance of
         our MainContentComponent class.
     */
-    class MainWindow    : public DocumentWindow
+    class MainWindow    : public juce::DocumentWindow
     {
     public:
-        MainWindow (String name)  : DocumentWindow (name,
-                                                    Colours::lightgrey,
-                                                    DocumentWindow::allButtons)
+        MainWindow (juce::String name)  : juce::DocumentWindow (name,
+                                            juce::Colours::lightgrey,
+                                            juce::DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
             setContentOwned (createMainContentComponent(), true);
@@ -93,7 +93,7 @@ public:
     };
 
 private:
-    ScopedPointer<MainWindow> mainWindow;
+    juce::ScopedPointer<MainWindow> mainWindow;
 };
 
 //==============================================================================

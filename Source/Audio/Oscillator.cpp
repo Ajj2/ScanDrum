@@ -10,6 +10,8 @@
 
 #include "Oscillator.h"
 
+using namespace juce;
+
 Oscillator::Oscillator()
 {
     reset();

@@ -16,23 +16,23 @@
 //==============================================================================
 /*
 */
-class Osc   :   private OSCReceiver,
-                private OSCReceiver::ListenerWithOSCAddress<OSCReceiver::MessageLoopCallback>
+class Osc   :   private juce::OSCReceiver,
+                private juce::OSCReceiver::ListenerWithOSCAddress<juce::OSCReceiver::MessageLoopCallback>
 {
 public:
     Osc();
     ~Osc();
     
     /** Called when the OSCReceiver receives a new OSC message.*/
-    void oscMessageReceived (const OSCMessage& message) override;
+    void oscMessageReceived (const juce::OSCMessage& message) override;
     
-    void sendOSCMessage (String ap, float val);
-    void sendOSCMessage (String ap, float val, float val2);
-    void sendOSCMessage (String ap, float val, float val2, float val3);
+    void sendOSCMessage (juce::String ap, float val);
+    void sendOSCMessage (juce::String ap, float val, float val2);
+    void sendOSCMessage (juce::String ap, float val, float val2, float val3);
 
 private:
     
-    OSCSender sender;
+    juce::OSCSender sender;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Osc)
 };

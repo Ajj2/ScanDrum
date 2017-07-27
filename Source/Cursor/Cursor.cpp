@@ -1,6 +1,6 @@
 #include "Cursor.h"
 
-Cursor(const std::string name):m_name(name) {
+Cursor::Cursor(const std::string name):m_name(name) {
 
 }
 
@@ -11,6 +11,7 @@ void Cursor::initialise (float pos[], float speed[], long& duration) {
     }
     m_time=0;
     m_duration=duration;
+
 }
 
 bool Cursor::update(const long& time) {
@@ -27,3 +28,4 @@ bool Cursor::update(const long& time) {
   }
   return done;
 }
+

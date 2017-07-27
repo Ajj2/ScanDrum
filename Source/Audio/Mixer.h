@@ -16,7 +16,7 @@
 
 /** This class contains all of the Mixer used by the App. It performs the routing and mixing necessary for all the Mixer.*/
 
-class Mixer : public AudioSource
+class Mixer : public juce::AudioSource
 {
 public:
     /** An enum that defines the parameters that each delay has.*/
@@ -51,7 +51,7 @@ public:
     void releaseResources() override;
     
     /** Called repeatedly to fetch subsequent blocks of audio data.*/
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     /** Sets a single parameter of one varDelay specified by the index argument
      @param index - the index of the delay to be updated.
@@ -68,7 +68,7 @@ public:
     /** Returns an reference to an array of Mixer contained in this component
      @return a reference to an OwnedArray that contains all the Mixer.
      */
-    const OwnedArray<VarDelay>& getVarDelays();
+    const juce::OwnedArray<VarDelay>& getVarDelays();
     /** Returns the number of delays
      @return the number of delays in use.
      */
@@ -76,7 +76,7 @@ public:
     /** Returns a string array of all the parameters that a single delay has
      @return A StringArray with all the parameters for a single VariableDelay class.
      */
-    StringArray getParameters();
+    juce::StringArray getParameters();
     /** Defines whether the delay lines are mixed in series or parallel
      @param newRoutingOption - references the routingOptions enum to set a new routing option
      */
@@ -90,16 +90,16 @@ public:
 private:
     //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
     
-    OwnedArray<VarDelay> delays;
+    juce::OwnedArray<VarDelay> delays;
     
     //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
     
-    AudioBuffer<float> scratchMixBuffer;
-    Array<AudioBuffer<float>> scratchBuffers;
-    Array<AudioSampleBuffer> inputSampleB;
+    juce::AudioBuffer<float> scratchMixBuffer;
+    juce::Array<juce::AudioBuffer<float>> scratchBuffers;
+    juce::Array<juce::AudioSampleBuffer> inputSampleB;
     
-    Atomic<float> inputGain;
-    LinearSmoothedValue<float> inputGainSmooth;
+    juce::Atomic<float> inputGain;
+    juce::LinearSmoothedValue<float> inputGainSmooth;
     
     int routingOption;
 };
