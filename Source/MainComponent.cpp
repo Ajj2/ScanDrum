@@ -45,7 +45,6 @@ public:
 
     ~MainContentComponent()
     {
-        delete osc;
         delete leapM;
         shutdownAudio();
     }
@@ -89,9 +88,9 @@ public:
 //        mixer.setDelayParameter(0, VarDelay::modSpeedP, 0.5);
 //        mixer.setDelayParameter(0, VarDelay::modDepthP, 0.8);
         
-        for (int i = 0 ; i < 6; i++)
+        for (int i = 0 ; i < 20; i++)
         {
-            multiFilter.addFilter(sampleRate, (i+1)*500, 10);
+            multiFilter.addFilter(sampleRate, (i+1)*200, 50);
         }
         multiFilter.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
@@ -132,7 +131,7 @@ public:
             outP++;
         }
         
-        //multiFilter.getNextAudioBlock(bufferToFill);
+        multiFilter.getNextAudioBlock(bufferToFill);
         
         //varDelay.getNextAudioBlock(bufferToFill);
         //mixer.getNextAudioBlock(bufferToFill);
@@ -156,7 +155,7 @@ public:
 
 private:
     //==============================================================================
-    Osc* osc;
+    ScopedPointer<Osc> osc;
     LeapM* leapM;
     
     uint_t hopSize;
