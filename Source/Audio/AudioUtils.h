@@ -13,6 +13,8 @@
 
 #include <JuceHeader.h>
 
+
+// This envelope class is a layer on top of the stk::Envelope class written by Chris Nash for teaching purposes at UWE
 class Envelope : public stk::Envelope
 {
 public:
@@ -231,3 +233,34 @@ private:
 };
 
 #endif  // AUDIOUTILS_H_INCLUDED
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+class MultibandFilter : public juce::AudioSource
+{
+public:
+
+    MultibandFilter();
+    ~MultibandFilter();
+
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
+    void releaseResources() override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
+    
+    void addFilter (double sampleRate, double frequency, double Q);
+    
+private:
+    juce::OwnedArray<juce::IIRFilter> filterBank;
+    juce::OwnedArray<juce::IIRCoefficients> filterCoeffs;
+
+    juce::ScopedPointer<juce::AudioBuffer<float>> scratchMixBuffer;
+    juce::Array<juce::AudioBuffer<float>> scratchBuffers;
+    juce::Array<juce::AudioSampleBuffer> inputSampleB;
+};
+
+
+

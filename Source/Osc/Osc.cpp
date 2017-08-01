@@ -35,6 +35,11 @@ Osc::Osc()
 
 Osc::~Osc(){}
 
+Osc* Osc::getInstance() {
+    static Osc instance;
+    return &instance;
+}
+
 void Osc::oscMessageReceived (const juce::OSCMessage& message)
 {
     DBG(message.getAddressPattern().toString() << " --> ");

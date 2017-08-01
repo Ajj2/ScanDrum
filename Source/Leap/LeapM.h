@@ -11,12 +11,15 @@
 #ifndef LEAPM_H_INCLUDED
 #define LEAPM_H_INCLUDED
 
+#include <deque>
+
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include <LeapMath.h>
 #include <Leap.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include "Osc.h"
+#include "Cursor.h"
 
 //==============================================================================
 /*
@@ -47,7 +50,15 @@ private:
     
     Osc& oscRef;
     
-    juce::Atomic<int> sendPosition;
+    juce::Atomic<int> gotOnset;
+    
+    double m_currentTime;
+    double m_prevTime;
+    
+    const int maxNumCursors = 20;
+    
+    std::deque<Cursor*> inactiveCursors;
+    std::deque<Cursor*> activeCursors;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LeapM)
 };

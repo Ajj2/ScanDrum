@@ -29,7 +29,7 @@ public:
     //==============================================================================
     MainContentComponent() : varDelay (1), mixer (1)
     {
-        osc = new Osc;
+        osc = Osc::getInstance();
         leapM = new LeapM (*osc);
         
         addAndMakeVisible(leapM);
@@ -88,6 +88,12 @@ public:
 //        mixer.setDelayParameter(0, VarDelay::mixP, 0.8);
 //        mixer.setDelayParameter(0, VarDelay::modSpeedP, 0.5);
 //        mixer.setDelayParameter(0, VarDelay::modDepthP, 0.8);
+        
+        for (int i = 0 ; i < 6; i++)
+        {
+            multiFilter.addFilter(sampleRate, (i+1)*500, 10);
+        }
+        multiFilter.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -121,12 +127,14 @@ public:
 //            *outP = data;
             
             *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5;
-            *outP = filter.processSingleSampleRaw(*outP) * env.tick();
+            //*outP = filter.processSingleSampleRaw(*outP) * env.tick();
         
             outP++;
         }
         
-        varDelay.getNextAudioBlock(bufferToFill);
+        //multiFilter.getNextAudioBlock(bufferToFill);
+        
+        //varDelay.getNextAudioBlock(bufferToFill);
         //mixer.getNextAudioBlock(bufferToFill);
     }
     
@@ -164,6 +172,8 @@ private:
     
     IIRFilter filter;
     IIRCoefficients coeff;
+    
+    MultibandFilter multiFilter;
     
     VarDelay varDelay;
     Mixer mixer;

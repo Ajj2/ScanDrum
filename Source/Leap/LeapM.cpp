@@ -15,7 +15,7 @@ using namespace juce;
 
 
 //==============================================================================
-LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), sendPosition (0)
+LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), gotOnset (0)
 {
     addAndMakeVisible(textDisplay);
     textDisplay.setText("leap motion input data will appear here .. ");
@@ -24,7 +24,21 @@ LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), sendPosition (0)
     textDisplay.setFont(Font(40));
     textDisplay.setMultiLine(true);
 
-    startTimerHz(60);
+    const int updateRate = 60;
+    for (int i  = 0; i < maxNumCursors; i++)
+    {
+        String name = "cursor" + (String)i;
+        inactiveCursors.push_front(new Cursor(name, updateRate));
+    }
+
+    m_prevTime = 0;
+    m_currentTime = 0;
+    
+     
+    controller.setPolicy(Leap::Controller::POLICY_IMAGES);
+    controller.setPolicy(Leap::Controller::POLICY_BACKGROUND_FRAMES);
+
+    startTimerHz(updateRate);
 }
 
 
@@ -48,6 +62,12 @@ void LeapM::resized()
 
 void LeapM::timerCallback()
 {
+    // Not sure if it accurate enough or not to do it like this. 
+
+    m_prevTime = m_currentTime;
+    m_currentTime = Time::getMillisecondCounterHiRes();
+    double timeElapsed = m_currentTime - m_prevTime;
+  
     textDisplay.clear();
     if (!controller.isConnected())
     {
@@ -55,9 +75,7 @@ void LeapM::timerCallback()
     }
     
     //extract video
-    
-    controller.setPolicy(Leap::Controller::POLICY_IMAGES);
-    controller.setPolicy(Leap::Controller::POLICY_BACKGROUND_FRAMES);
+   
     
     cv::namedWindow("Leap", CV_WINDOW_NORMAL);
     Leap::Image img = controller.images()[0];
@@ -105,24 +123,39 @@ void LeapM::timerCallback()
                 convexHull(cv::Mat(contours[c]), hull[c], false);
                 cv::drawContours(leapImg, hull, c,
                                  cv::Scalar(255));
-                std::vector<float> vals;
-                for(int v=0; v<hull[c].size(); ++v)
+                        
+                if(gotOnset.get() == 1)
                 {
-                    vals.push_back(hull[c][v].x);
-                    vals.push_back(hull[c][v].y);
-                }
-                
-                //oscRef.sendOSCMessage("/revil/spaces/space/cursor1/clear_vertices", 1);
-                
-                if (sendPosition.get() == 1)
-                {
-                    for (int i = 2; i < vals.size(); i++)
-                    {
-                        oscRef.sendOSCMessage("/revil/spaces/space/cursor1/add_vertex", vals[0], vals[1], 0);
+                    // If the inactive cursor array still has something in it
+                    if(inactiveCursors.size() != 0)
+                    {   // Copy one from it's front and add it to the back of the active cursor array
+                        activeCursors.push_back(inactiveCursors.front());
+                        // Remove the one that was copied from the inactive array
+                        inactiveCursors.pop_front();
                     }
-                    sendPosition = 0;
+                    else // Else, if the inactive array is empty
+                    {   // Copy the oldest one from the active array (the front) and move it to the back
+                        activeCursors.push_back(activeCursors.front());
+                        // Remove the one that was copied
+                        activeCursors.pop_front();
+                    }
+                    // initialise the new or moved one
+                    float pos[3]={0,0,0};
+                    float speed[3]={0,0,10};
+                    activeCursors.back()->initialise(pos, speed, 1000, hull[c]);
+                    gotOnset = 0;
                 }
             }
+        }
+    }
+    for (int i = 0; i < activeCursors.size(); i++)
+    {
+    // how to get the time to send to the update function
+    // we need to compute it here (at the top of timercallback
+        if (activeCursors[i]->update(timeElapsed))
+        {
+            inactiveCursors.push_back(activeCursors[i]);
+            activeCursors.erase(activeCursors.begin()+i);
         }
     }
 }
@@ -131,6 +164,6 @@ void LeapM::actionListenerCallback (const String &message)
 {
     if (message == "onsetDetected")
     {
-        sendPosition = true;
+        gotOnset = true;
     }
 }

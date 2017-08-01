@@ -20,8 +20,9 @@ class Osc   :   private juce::OSCReceiver,
                 private juce::OSCReceiver::ListenerWithOSCAddress<juce::OSCReceiver::MessageLoopCallback>
 {
 public:
-    Osc();
     ~Osc();
+
+    static Osc* getInstance();
     
     /** Called when the OSCReceiver receives a new OSC message.*/
     void oscMessageReceived (const juce::OSCMessage& message) override;
@@ -31,6 +32,8 @@ public:
     void sendOSCMessage (juce::String ap, float val, float val2, float val3);
 
 private:
+
+    Osc();
     
     juce::OSCSender sender;
     

@@ -62,7 +62,8 @@ def configure(conf):
     #debug specific
     conf.setenv('debug', env=conf.env.derive())
     conf.env.CXXFLAGS = ['-g', '-Wall', '-std=c++11']
-    conf.env.DEFINES  = ['DEBUG(x)=std::cout<< x <<std::endl;']
+    conf.env.DEFINES  = ['DEBUG(x)=std::cout<< x <<std::endl;', 
+                         'DONT_SET_USING_JUCE_NAMESPACE=1']
 
 def build(bld):
     installPath = '/usr/local/bin'
