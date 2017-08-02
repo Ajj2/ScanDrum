@@ -70,7 +70,7 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         filterBank[i]->processSamples(inputSamples[i].getWritePointer(0) , numSamples);
     }
     
-    AudioBuffer<float> mixedBuffer(scratchMixBuffer->getArrayOfWritePointers(), 2, numSamples);
+    juce::AudioBuffer<float> mixedBuffer(scratchMixBuffer->getArrayOfWritePointers(), 2, numSamples);
     mixedBuffer.clear();
     
     for (int i = 0; i < 1; i++)
@@ -111,20 +111,20 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
 void MultibandFilter::addFilter (double sampleRate, double frequency, double Q)
 {
     Sr = sampleRate;
-    IIRFilter* newFilter;
-    filterBank.add(newFilter = new IIRFilter);
-    IIRCoefficients* newCoeff;
+    juce::IIRFilter* newFilter;
+    filterBank.add(newFilter = new juce::IIRFilter);
+    juce::IIRCoefficients* newCoeff;
     
-    filterCoeffs.add(newCoeff = new IIRCoefficients);
+    filterCoeffs.add(newCoeff = new juce::IIRCoefficients);
     
-    *newCoeff = IIRCoefficients::makeBandPass(sampleRate, frequency, Q);
+    *newCoeff = juce::IIRCoefficients::makeBandPass(sampleRate, frequency, Q);
     
     newFilter->setCoefficients(*newCoeff);
 }
 
 void MultibandFilter::setFilerFreq (int index, double frequency, double Q)
 {
-    *filterCoeffs[index] = IIRCoefficients::makeBandPass(Sr, frequency, Q);
+    *filterCoeffs[index] = juce::IIRCoefficients::makeBandPass(Sr, frequency, Q);
     
     filterBank[index]->setCoefficients(*filterCoeffs[index]);
 }
