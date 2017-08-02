@@ -63,6 +63,12 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         }
     }
     bufferToFill.clearActiveBufferRegion();
+
+    
+    for (int i = 0 ; i < filterBank.size(); i ++)
+    {
+        filterBank[i]->processSamples(inputSamples[i].getWritePointer(0) , numSamples);
+    }
     
     AudioBuffer<float> mixedBuffer(scratchMixBuffer->getArrayOfWritePointers(), 2, numSamples);
     mixedBuffer.clear();
@@ -74,6 +80,7 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         
         for (int j = 0; j < filterBank.size(); j++)
         {
+            // inputInfos now contains the wet signal from the varDelays --> get a pointer for each to read from them.
             readPs[j] = inputSamples[j].getWritePointer(i);
         }
         
@@ -83,12 +90,9 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         {
             for (int p = 0; p < filterBank.size(); p++)
             {
-                //if (p == 2)
-                //{
                 // Sum the contents into the mixedBuffer
                 *writeP += *readPs[p];
                 readPs[p]++;
-                //}
             }
             writeP++;
         }
@@ -99,8 +103,8 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         // Copy mixed buffer into bufferToFill
         bufferToFill.buffer->copyFrom(i, 0, mixedBuffer, i, 0, numSamples);
     }
-    
-    bufferToFill.buffer->applyGain(1.0 / (float)filterBank.size());
+
+    bufferToFill.buffer->applyGain ( ((float)filterBank.size() * 0.25) + 1.0 );
 }
 
 void MultibandFilter::addFilter (double sampleRate, double frequency, double Q)
@@ -111,6 +115,7 @@ void MultibandFilter::addFilter (double sampleRate, double frequency, double Q)
     
     filterCoeffs.add(newCoeff = new IIRCoefficients);
     
-    *newCoeff = IIRCoefficients::makePeakFilter(sampleRate, frequency, Q, 10);
+    *newCoeff = IIRCoefficients::makeBandPass(sampleRate, frequency, Q);
+    
     newFilter->setCoefficients(*newCoeff);
 }
