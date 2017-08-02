@@ -4,6 +4,10 @@
               bundleIdentifier="com.yourcompany.ScanDrum" includeBinaryInAppConfig="1"
               jucerVersion="4.3.1">
   <MAINGROUP id="XatUTH" name="ScanDrum">
+    <GROUP id="{7CD1E97F-70D1-429F-3306-492368F5ACC3}" name="Cursor">
+      <FILE id="QVU1FN" name="Cursor.cpp" compile="1" resource="0" file="Source/Cursor/Cursor.cpp"/>
+      <FILE id="sjjwPB" name="Cursor.h" compile="0" resource="0" file="Source/Cursor/Cursor.h"/>
+    </GROUP>
     <GROUP id="{50929940-B517-5B9C-43A8-0B791FAFDC11}" name="Audio">
       <FILE id="Ahg8cS" name="AudioUtils.cpp" compile="1" resource="0" file="Source/Audio/AudioUtils.cpp"/>
       <FILE id="KW4p31" name="AudioUtils.h" compile="0" resource="0" file="Source/Audio/AudioUtils.h"/>
