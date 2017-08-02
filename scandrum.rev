@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Revil>
+  <Attributes>
+    <open>
+      <String value=""/>
+    </open>
+    <save>
+      <String value="/home/flo/INFO/Projets/ScanDrum/scandrum.rev"/>
+    </save>
+    <quit/>
+  </Attributes>
+  <Modules>
+    <Spaces>
+      <Attributes>
+        <add_space/>
+      </Attributes>
+      <Modules>
+        <Preview>
+          <Attributes>
+            <active>
+              <Bool value="1"/>
+            </active>
+            <look_at>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+            </look_at>
+            <from>
+              <Float value="-360"/>
+              <Float value="0"/>
+              <Float value="-780"/>
+            </from>
+          </Attributes>
+        </Preview>
+        <Space>
+          <Attributes>
+            <name>
+              <String value="space"/>
+            </name>
+            <add_projector/>
+            <add_depth_camera/>
+            <add_depth_shape>
+              <String value="shape"/>
+            </add_depth_shape>
+            <add_depth_mesh>
+              <String value="mesh"/>
+            </add_depth_mesh>
+          </Attributes>
+          <Modules>
+            <DepthMesh>
+              <Attributes>
+                <name>
+                  <String value="cursor1"/>
+                </name>
+                <remove/>
+                <visible>
+                  <Bool value="1"/>
+                </visible>
+                <add_vertex>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </add_vertex>
+                <clear_vertices/>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="200"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="200"/>
+                </absolute_position>
+              </Attributes>
+            </DepthMesh>
+            <DepthMesh>
+              <Attributes>
+                <name>
+                  <String value="cursor2"/>
+                </name>
+                <remove/>
+                <visible>
+                  <Bool value="1"/>
+                </visible>
+                <add_vertex>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </add_vertex>
+                <clear_vertices/>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </absolute_position>
+              </Attributes>
+            </DepthMesh>
+            <DepthMesh>
+              <Attributes>
+                <name>
+                  <String value="cursor3"/>
+                </name>
+                <remove/>
+                <visible>
+                  <Bool value="1"/>
+                </visible>
+                <add_vertex>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </add_vertex>
+                <clear_vertices/>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </absolute_position>
+              </Attributes>
+            </DepthMesh>
+            <DepthCam>
+              <Attributes>
+                <name>
+                  <String value="depthcam"/>
+                </name>
+                <remove/>
+                <visible>
+                  <Bool value="1"/>
+                </visible>
+                <open_device>
+                  <String value="1d27/0601@1/19"/>
+                </open_device>
+                <mode>
+                  <String value="320x240x60"/>
+                </mode>
+                <filter>
+                  <Bool value="0"/>
+                </filter>
+                <contour_threshold>
+                  <Float value="50"/>
+                </contour_threshold>
+                <calibrate_with_projector>
+                  <String value="none"/>
+                </calibrate_with_projector>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-700"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-700"/>
+                </absolute_position>
+                <detect_markers>
+                  <Bool value="0"/>
+                </detect_markers>
+                <detection_method>
+                  <String value="flood"/>
+                </detection_method>
+                <marker_output>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </marker_output>
+              </Attributes>
+              <Modules/>
+            </DepthCam>
+            <Projector>
+              <Attributes>
+                <name>
+                  <String value="projector"/>
+                </name>
+                <remove/>
+                <active>
+                  <Bool value="1"/>
+                </active>
+                <window_dimensions>
+                  <Int value="0"/>
+                  <Int value="65"/>
+                  <Int value="640"/>
+                  <Int value="480"/>
+                </window_dimensions>
+                <fullscreen_monitor>
+                  <String value="windowed"/>
+                </fullscreen_monitor>
+                <view_matrix>
+                  <Float value="1"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-1"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </view_matrix>
+                <projection_matrix>
+                  <Float value="1.34444"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1.79259"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-1.0202"/>
+                  <Float value="-1"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-202.02"/>
+                  <Float value="0"/>
+                </projection_matrix>
+                <mirrored>
+                  <Bool value="0"/>
+                </mirrored>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-700"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="-700"/>
+                </absolute_position>
+                <attached_to_camera>
+                  <String value="none"/>
+                </attached_to_camera>
+                <calibrate_with_camera>
+                  <String value="none"/>
+                </calibrate_with_camera>
+                <output_revealed>
+                  <Bool value="1"/>
+                </output_revealed>
+              </Attributes>
+            </Projector>
+          </Modules>
+        </Space>
+      </Modules>
+    </Spaces>
+    <Scene>
+      <Attributes>
+        <add_shape>
+          <String value="shape"/>
+        </add_shape>
+        <add_model>
+          <String value="model"/>
+        </add_model>
+        <add_path>
+          <String value="path"/>
+        </add_path>
+        <add_text>
+          <String value="text"/>
+        </add_text>
+        <add_cut>
+          <String value="cut"/>
+        </add_cut>
+        <add_group>
+          <String value="group"/>
+        </add_group>
+      </Attributes>
+      <Modules>
+        <Shape>
+          <Attributes>
+            <name>
+              <String value="shape"/>
+              <Listeners/>
+            </name>
+            <remove>
+              <Listeners/>
+            </remove>
+            <visible>
+              <Bool value="1"/>
+              <Listeners/>
+            </visible>
+            <visible_from>
+              <String value="all"/>
+              <Listeners/>
+            </visible_from>
+            <revealed_by>
+              <String value="all"/>
+              <Listeners/>
+            </revealed_by>
+            <shape>
+              <String value="box"/>
+              <Listeners/>
+            </shape>
+            <dimensions>
+              <Float value="100"/>
+              <Float value="100"/>
+              <Float value="100"/>
+              <Listeners/>
+            </dimensions>
+            <position>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Listeners/>
+            </position>
+            <scale>
+              <Float value="2"/>
+              <Float value="2"/>
+              <Float value="2"/>
+              <Listeners/>
+            </scale>
+            <quaternion>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="1"/>
+              <Listeners/>
+            </quaternion>
+            <rotation>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Listeners/>
+            </rotation>
+            <absolute_position>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+            </absolute_position>
+            <color>
+              <Float value="360"/>
+              <Float value="0"/>
+              <Float value="100"/>
+              <Listeners/>
+            </color>
+            <surface>
+              <String value="color"/>
+              <Listeners/>
+            </surface>
+            <surface_thickness>
+              <Float value="1"/>
+              <Listeners/>
+            </surface_thickness>
+            <surface_texture>
+              <String value=""/>
+              <Listeners/>
+            </surface_texture>
+            <inside>
+              <String value="texture_layers_blend"/>
+              <Listeners/>
+            </inside>
+            <inside_axes>
+              <String value="local"/>
+              <Listeners/>
+            </inside_axes>
+            <gradient_type>
+              <String value="centered"/>
+              <Listeners/>
+            </gradient_type>
+            <texture>
+              <String value=""/>
+              <Listeners/>
+            </texture>
+            <texture_layers_folder>
+              <String value="/home/flo/INFO/Soft/revil/data"/>
+              <String value="../Soft/revil/data"/>
+              <Listeners/>
+            </texture_layers_folder>
+            <texture_offset>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Listeners/>
+            </texture_offset>
+            <texture_scale>
+              <Float value="1"/>
+              <Float value="1"/>
+              <Float value="1"/>
+              <Listeners/>
+            </texture_scale>
+            <layer_anim_position>
+              <Float value="0"/>
+              <Listeners/>
+            </layer_anim_position>
+            <layer_anim_play>
+              <Bool value="0"/>
+              <Listeners/>
+            </layer_anim_play>
+            <layer_anim_speed>
+              <Float value="1"/>
+              <Listeners/>
+            </layer_anim_speed>
+            <revealed_name>
+              <String value="cursor1"/>
+              <Listeners>
+                <OscListener>
+                  <Parameter value="/revil/scene/shape/revealed_name"/>
+                  <Parameter value="127.0.0.1:7000"/>
+                </OscListener>
+              </Listeners>
+            </revealed_name>
+            <revealed_surface>
+              <Float value="0"/>
+              <Listeners/>
+            </revealed_surface>
+            <revealed_inside>
+              <Float value="0"/>
+              <Listeners>
+                <OscListener>
+                  <Parameter value="/revil/scene/shape/revealed_inside"/>
+                  <Parameter value="127.0.0.1:7000"/>
+                </OscListener>
+              </Listeners>
+            </revealed_inside>
+            <revealed_center>
+              <Float value="0.5"/>
+              <Float value="0.5"/>
+              <Float value="0.5"/>
+              <Listeners/>
+            </revealed_center>
+            <revealed_extent>
+              <Float value="1"/>
+              <Float value="1"/>
+              <Float value="1"/>
+              <Listeners/>
+            </revealed_extent>
+            <revealed_color>
+              <Float value="nan"/>
+              <Float value="nan"/>
+              <Float value="nan"/>
+              <Listeners/>
+            </revealed_color>
+            <revealed_blob>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Float value="0"/>
+              <Listeners>
+                <OscListener>
+                  <Parameter value="/revil/scene/shape/revealed_blob"/>
+                  <Parameter value="127.0.0.1:7000"/>
+                </OscListener>
+              </Listeners>
+            </revealed_blob>
+          </Attributes>
+        </Shape>
+      </Modules>
+    </Scene>
+  </Modules>
+</Revil>
