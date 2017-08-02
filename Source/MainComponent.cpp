@@ -23,7 +23,8 @@ using namespace juce;
 //==============================================================================
 
 class MainContentComponent   : public AudioAppComponent,
-                               public ActionBroadcaster
+                               public ActionBroadcaster,
+                               public MidiInputCallback
 {
 public:
     //==============================================================================
@@ -41,6 +42,16 @@ public:
         setSize (800, 600);
         
         myRand.setSeed (Time::getMillisecondCounter());
+        
+        StringArray devices = MidiOutput::getDevices();
+    
+        deviceManager.addMidiInputCallback(String::empty, this);
+        deviceManager.setMidiInputEnabled("Launch Control XL", true);
+        
+        for (int i = 0; i < 8; i++)
+        {
+            filterBankFreq[i] = 50;
+        }
     }
 
     ~MainContentComponent()
@@ -89,7 +100,7 @@ public:
 //        mixer.setDelayParameter(0, VarDelay::modSpeedP, 0.5);
 //        mixer.setDelayParameter(0, VarDelay::modDepthP, 0.8);
         
-        for (int i = 0 ; i < 6; i++)
+        for (int i = 0 ; i < 8; i++)
         {
             multiFilter.addFilter(sampleRate, (i+1)*500, 10);
         }
@@ -118,6 +129,11 @@ public:
             }
         }
         
+        for (int filter = 0; filter < 8; filter++)
+        {
+            multiFilter.setFilerFreq(filter, filterBankFreq[filter].get(), 10);
+        }
+        
         float* outP = bufferToFill.buffer->getWritePointer(0);
         int numSamples = bufferToFill.numSamples;
         
@@ -132,7 +148,7 @@ public:
             outP++;
         }
         
-        //multiFilter.getNextAudioBlock(bufferToFill);
+        multiFilter.getNextAudioBlock(bufferToFill);
         
         //varDelay.getNextAudioBlock(bufferToFill);
         //mixer.getNextAudioBlock(bufferToFill);
@@ -140,6 +156,45 @@ public:
     
     void releaseResources() override{}
 
+    //==============================================================================
+    
+    void handleIncomingMidiMessage(MidiInput *source, const MidiMessage& message) override
+    {
+        if (message.isController())
+        {
+            float value = (float)message.getControllerValue() / 127.0;
+            switch (message.getControllerNumber())
+            {
+                case 77:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 78:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 79:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 80:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 81:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 82:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 83:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                case 84:
+                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
     //==============================================================================
     
     void paint (Graphics& g) override
@@ -177,6 +232,8 @@ private:
     
     VarDelay varDelay;
     Mixer mixer;
+    
+    Atomic<float> filterBankFreq[8];
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };

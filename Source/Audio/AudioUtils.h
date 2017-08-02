@@ -252,6 +252,7 @@ public:
     void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     void addFilter (double sampleRate, double frequency, double Q);
+    void setFilerFreq (int index, double frequency, double Q);
     
 private:
     juce::OwnedArray<juce::IIRFilter> filterBank;
@@ -260,6 +261,8 @@ private:
     juce::ScopedPointer<juce::AudioBuffer<float>> scratchMixBuffer;
     juce::Array<juce::AudioBuffer<float>> scratchBuffers;
     juce::Array<juce::AudioSampleBuffer> inputSampleB;
+    
+    int Sr;
 };
 
 

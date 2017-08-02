@@ -90,9 +90,12 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         {
             for (int p = 0; p < filterBank.size(); p++)
             {
-                // Sum the contents into the mixedBuffer
-                *writeP += *readPs[p];
-                readPs[p]++;
+                if (p == 0)
+                {
+                    // Sum the contents into the mixedBuffer
+                    *writeP += *readPs[p];
+                    readPs[p]++;
+                }
             }
             writeP++;
         }
@@ -103,12 +106,11 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         // Copy mixed buffer into bufferToFill
         bufferToFill.buffer->copyFrom(i, 0, mixedBuffer, i, 0, numSamples);
     }
-
-    bufferToFill.buffer->applyGain ( ((float)filterBank.size() * 0.25) + 1.0 );
 }
 
 void MultibandFilter::addFilter (double sampleRate, double frequency, double Q)
 {
+    Sr = sampleRate;
     IIRFilter* newFilter;
     filterBank.add(newFilter = new IIRFilter);
     IIRCoefficients* newCoeff;
@@ -118,4 +120,11 @@ void MultibandFilter::addFilter (double sampleRate, double frequency, double Q)
     *newCoeff = IIRCoefficients::makeBandPass(sampleRate, frequency, Q);
     
     newFilter->setCoefficients(*newCoeff);
+}
+
+void MultibandFilter::setFilerFreq (int index, double frequency, double Q)
+{
+    *filterCoeffs[index] = IIRCoefficients::makeBandPass(Sr, frequency, Q);
+    
+    filterBank[index]->setCoefficients(*filterCoeffs[index]);
 }
