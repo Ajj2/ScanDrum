@@ -5,7 +5,7 @@
       <String value=""/>
     </open>
     <save>
-      <String value="/home/flo/INFO/Projets/ScanDrum/scandrum.rev"/>
+      <String value="/home/flo/INFO/Projets/ScanDrum/ScanDrum/scandrum.rev"/>
     </save>
     <quit/>
   </Attributes>
@@ -47,6 +47,51 @@
             </add_depth_mesh>
           </Attributes>
           <Modules>
+            <DepthShape>
+              <Attributes>
+                <name>
+                  <String value="depthshape"/>
+                </name>
+                <remove/>
+                <visible>
+                  <Bool value="0"/>
+                </visible>
+                <shape>
+                  <String value="box"/>
+                </shape>
+                <dimensions>
+                  <Float value="100"/>
+                  <Float value="100"/>
+                  <Float value="100"/>
+                </dimensions>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </position>
+                <scale>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                  <Float value="1"/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                </absolute_position>
+              </Attributes>
+            </DepthShape>
             <DepthMesh>
               <Attributes>
                 <name>
@@ -57,20 +102,20 @@
                   <Bool value="1"/>
                 </visible>
                 <add_vertex>
-                  <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="318"/>
+                  <Float value="-39"/>
                   <Float value="0"/>
                 </add_vertex>
                 <clear_vertices/>
                 <position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="200"/>
+                  <Float value="590"/>
                 </position>
                 <scale>
-                  <Float value="1"/>
-                  <Float value="1"/>
-                  <Float value="1"/>
+                  <Float value="3"/>
+                  <Float value="3.9"/>
+                  <Float value="5.9"/>
                 </scale>
                 <quaternion>
                   <Float value="0"/>
@@ -86,7 +131,7 @@
                 <absolute_position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="200"/>
+                  <Float value="590"/>
                 </absolute_position>
               </Attributes>
             </DepthMesh>
@@ -100,15 +145,15 @@
                   <Bool value="1"/>
                 </visible>
                 <add_vertex>
-                  <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="318"/>
+                  <Float value="-47"/>
                   <Float value="0"/>
                 </add_vertex>
                 <clear_vertices/>
                 <position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="600"/>
                 </position>
                 <scale>
                   <Float value="1"/>
@@ -129,7 +174,7 @@
                 <absolute_position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="600"/>
                 </absolute_position>
               </Attributes>
             </DepthMesh>
@@ -398,13 +443,13 @@
             <position>
               <Float value="0"/>
               <Float value="0"/>
-              <Float value="0"/>
+              <Float value="300"/>
               <Listeners/>
             </position>
             <scale>
-              <Float value="2"/>
-              <Float value="2"/>
-              <Float value="2"/>
+              <Float value="5"/>
+              <Float value="5"/>
+              <Float value="5"/>
               <Listeners/>
             </scale>
             <quaternion>
@@ -423,7 +468,7 @@
             <absolute_position>
               <Float value="0"/>
               <Float value="0"/>
-              <Float value="0"/>
+              <Float value="300"/>
             </absolute_position>
             <color>
               <Float value="360"/>
@@ -461,7 +506,7 @@
             </texture>
             <texture_layers_folder>
               <String value="/home/flo/INFO/Soft/revil/data"/>
-              <String value="../Soft/revil/data"/>
+              <String value="../../Soft/revil/data"/>
               <Listeners/>
             </texture_layers_folder>
             <texture_offset>
@@ -489,7 +534,7 @@
               <Listeners/>
             </layer_anim_speed>
             <revealed_name>
-              <String value="cursor1"/>
+              <String value="cursor2"/>
               <Listeners>
                 <OscListener>
                   <Parameter value="/revil/scene/shape/revealed_name"/>
@@ -523,9 +568,9 @@
               <Listeners/>
             </revealed_extent>
             <revealed_color>
-              <Float value="nan"/>
-              <Float value="nan"/>
-              <Float value="nan"/>
+              <Float value="-nan"/>
+              <Float value="-nan"/>
+              <Float value="-nan"/>
               <Listeners/>
             </revealed_color>
             <revealed_blob>
