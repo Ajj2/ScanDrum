@@ -83,10 +83,10 @@ public:
         varDelay.prepareToPlay(samplesPerBlockExpected, sampleRate);
         varDelay.setOutGain(1);
         varDelay.setModWaveShape(VarDelay::sine);
-        varDelay.setParameter(VarDelay::delayTimeP, 0.02);
+        varDelay.setParameter(VarDelay::delayTimeP, 0.1);
         varDelay.setParameter(VarDelay::feedbackP, 0.9);
-        varDelay.setParameter(VarDelay::mixP, 0.8);
-        varDelay.setParameter(VarDelay::modSpeedP, 0.1);
+        varDelay.setParameter(VarDelay::mixP, 0.5);
+        varDelay.setParameter(VarDelay::modSpeedP, 0.5);
         varDelay.setParameter(VarDelay::modDepthP, 0.8);
         
 //        mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
@@ -121,7 +121,6 @@ public:
                 std::cout << "got onset " << counter++ << std::endl;
                 
                 // Send the current coordinates from the leap class
-                
                 sendActionMessage("onsetDetected");
                 env.set(Envelope::Points(0, 0)(1, 1)(2, 0), Sr);
             }
@@ -146,13 +145,13 @@ public:
 //            stk::StkFloat data = sine.tick();
 //            *outP = data;
             
-            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 ;//* env.tick();;
+            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 * env.tick();;
             outP++;
         }
         
         multiFilter.getNextAudioBlock(bufferToFill);
         
-        //varDelay.getNextAudioBlock(bufferToFill);
+        varDelay.getNextAudioBlock(bufferToFill);
         //mixer.getNextAudioBlock(bufferToFill);
     }
     
@@ -199,6 +198,15 @@ public:
     
     //==============================================================================
     
+    void setFilterBankFreq (int index, float newFreq)
+    {
+        if (index > 0 && index < multiFilter.getNumFilters()-1)
+        {
+            filterBankFreq[index] = newFreq;
+        }
+    }
+    
+    //==============================================================================
     void paint (Graphics& g) override
     {
         g.fillAll (Colours::darkgrey);

@@ -73,6 +73,10 @@ void LeapM::timerCallback()
     {
         textDisplay.setText("No Leap Conntected");
     }
+    else
+    {
+        textDisplay.setText("Getting Data from Leap");
+    }
     
     //extract video
    
@@ -100,7 +104,7 @@ void LeapM::timerCallback()
         //avg brightness
         cv::Scalar meanValue = cv::mean(leapImg);
         
-        String mess="/exprsui/input/video/brightness";
+        //String mess="/exprsui/input/video/brightness";
         std::vector<float> values(1,meanValue[0]);
         
         //threshold
@@ -150,8 +154,6 @@ void LeapM::timerCallback()
     }
     for (int i = 0; i < activeCursors.size(); i++)
     {
-    // how to get the time to send to the update function
-    // we need to compute it here (at the top of timercallback
         if (activeCursors[i]->update(timeElapsed))
         {
             inactiveCursors.push_back(activeCursors[i]);

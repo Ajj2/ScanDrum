@@ -253,6 +253,7 @@ public:
     
     void addFilter (double sampleRate, double frequency, double Q);
     void setFilerFreq (int index, double frequency, double Q);
+    int getNumFilters () { return filterBank.size(); }
     
 private:
     juce::OwnedArray<juce::IIRFilter> filterBank;
