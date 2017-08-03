@@ -55,7 +55,7 @@ private:
     double m_currentTime;
     double m_prevTime;
     
-    const int maxNumCursors = 20;
+    const int maxNumCursors = 3;
     
     std::deque<Cursor*> inactiveCursors;
     std::deque<Cursor*> activeCursors;

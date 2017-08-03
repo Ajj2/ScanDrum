@@ -5,7 +5,7 @@
       <String value=""/>
     </open>
     <save>
-      <String value="/home/flo/INFO/Projets/ScanDrum/scandrum.rev"/>
+      <String value="/home/flo/INFO/Projets/ScanDrum/ScanDrum/scandrum.rev"/>
     </save>
     <quit/>
   </Attributes>
@@ -47,6 +47,61 @@
             </add_depth_mesh>
           </Attributes>
           <Modules>
+            <DepthShape>
+              <Attributes>
+                <name>
+                  <String value="depthshape"/>
+                  <Listeners/>
+                </name>
+                <remove>
+                  <Listeners/>
+                </remove>
+                <visible>
+                  <Bool value="1"/>
+                  <Listeners/>
+                </visible>
+                <shape>
+                  <String value="box"/>
+                  <Listeners/>
+                </shape>
+                <dimensions>
+                  <Float value="100"/>
+                  <Float value="100"/>
+                  <Float value="100"/>
+                  <Listeners/>
+                </dimensions>
+                <position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="286.4"/>
+                  <Listeners/>
+                </position>
+                <scale>
+                  <Float value="10"/>
+                  <Float value="10"/>
+                  <Float value="1"/>
+                  <Listeners/>
+                </scale>
+                <quaternion>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="1"/>
+                  <Listeners/>
+                </quaternion>
+                <rotation>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Listeners/>
+                </rotation>
+                <absolute_position>
+                  <Float value="0"/>
+                  <Float value="0"/>
+                  <Float value="286.4"/>
+                </absolute_position>
+              </Attributes>
+            </DepthShape>
             <DepthMesh>
               <Attributes>
                 <name>
@@ -65,12 +120,12 @@
                 <position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="200"/>
+                  <Float value="590"/>
                 </position>
                 <scale>
-                  <Float value="1"/>
-                  <Float value="1"/>
-                  <Float value="1"/>
+                  <Float value="3"/>
+                  <Float value="3.9"/>
+                  <Float value="5.9"/>
                 </scale>
                 <quaternion>
                   <Float value="0"/>
@@ -86,7 +141,7 @@
                 <absolute_position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="200"/>
+                  <Float value="590"/>
                 </absolute_position>
               </Attributes>
             </DepthMesh>
@@ -108,7 +163,7 @@
                 <position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="600"/>
                 </position>
                 <scale>
                   <Float value="1"/>
@@ -129,7 +184,7 @@
                 <absolute_position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="0"/>
+                  <Float value="600"/>
                 </absolute_position>
               </Attributes>
             </DepthMesh>
@@ -254,8 +309,8 @@
                   <Bool value="1"/>
                 </active>
                 <window_dimensions>
-                  <Int value="0"/>
-                  <Int value="65"/>
+                  <Int value="516"/>
+                  <Int value="230"/>
                   <Int value="640"/>
                   <Int value="480"/>
                 </window_dimensions>
@@ -368,128 +423,102 @@
           <Attributes>
             <name>
               <String value="shape"/>
-              <Listeners/>
             </name>
-            <remove>
-              <Listeners/>
-            </remove>
+            <remove/>
             <visible>
               <Bool value="1"/>
-              <Listeners/>
             </visible>
             <visible_from>
               <String value="all"/>
-              <Listeners/>
             </visible_from>
             <revealed_by>
               <String value="all"/>
-              <Listeners/>
             </revealed_by>
             <shape>
               <String value="box"/>
-              <Listeners/>
             </shape>
             <dimensions>
               <Float value="100"/>
               <Float value="100"/>
               <Float value="100"/>
-              <Listeners/>
             </dimensions>
             <position>
               <Float value="0"/>
               <Float value="0"/>
-              <Float value="0"/>
-              <Listeners/>
+              <Float value="300"/>
             </position>
             <scale>
-              <Float value="2"/>
-              <Float value="2"/>
-              <Float value="2"/>
-              <Listeners/>
+              <Float value="5"/>
+              <Float value="5"/>
+              <Float value="5"/>
             </scale>
             <quaternion>
               <Float value="0"/>
               <Float value="0"/>
               <Float value="0"/>
               <Float value="1"/>
-              <Listeners/>
             </quaternion>
             <rotation>
               <Float value="0"/>
               <Float value="0"/>
               <Float value="0"/>
-              <Listeners/>
             </rotation>
             <absolute_position>
               <Float value="0"/>
               <Float value="0"/>
-              <Float value="0"/>
+              <Float value="300"/>
             </absolute_position>
             <color>
               <Float value="360"/>
               <Float value="0"/>
-              <Float value="100"/>
-              <Listeners/>
+              <Float value="200"/>
             </color>
             <surface>
-              <String value="color"/>
-              <Listeners/>
+              <String value="none"/>
             </surface>
             <surface_thickness>
               <Float value="1"/>
-              <Listeners/>
             </surface_thickness>
             <surface_texture>
               <String value=""/>
-              <Listeners/>
             </surface_texture>
             <inside>
               <String value="texture_layers_blend"/>
-              <Listeners/>
             </inside>
             <inside_axes>
               <String value="local"/>
-              <Listeners/>
             </inside_axes>
             <gradient_type>
               <String value="centered"/>
-              <Listeners/>
             </gradient_type>
             <texture>
               <String value=""/>
-              <Listeners/>
             </texture>
             <texture_layers_folder>
-              <String value="/home/flo/INFO/Soft/revil/data"/>
-              <String value="../Soft/revil/data"/>
-              <Listeners/>
+              <String value="/home/flo/INFO/Projets/ScanDrum/ScanDrum/scans/brain"/>
+              <String value="scans/brain"/>
             </texture_layers_folder>
             <texture_offset>
               <Float value="0"/>
               <Float value="0"/>
               <Float value="0"/>
-              <Listeners/>
             </texture_offset>
             <texture_scale>
               <Float value="1"/>
               <Float value="1"/>
               <Float value="1"/>
-              <Listeners/>
             </texture_scale>
             <layer_anim_position>
               <Float value="0"/>
-              <Listeners/>
             </layer_anim_position>
             <layer_anim_play>
               <Bool value="0"/>
-              <Listeners/>
             </layer_anim_play>
             <layer_anim_speed>
               <Float value="1"/>
-              <Listeners/>
             </layer_anim_speed>
             <revealed_name>
-              <String value="cursor1"/>
+              <String value="depthshape"/>
               <Listeners>
                 <OscListener>
                   <Parameter value="/revil/scene/shape/revealed_name"/>
@@ -499,10 +528,9 @@
             </revealed_name>
             <revealed_surface>
               <Float value="0"/>
-              <Listeners/>
             </revealed_surface>
             <revealed_inside>
-              <Float value="0"/>
+              <Float value="1"/>
               <Listeners>
                 <OscListener>
                   <Parameter value="/revil/scene/shape/revealed_inside"/>
@@ -511,122 +539,119 @@
               </Listeners>
             </revealed_inside>
             <revealed_center>
-              <Float value="0.5"/>
-              <Float value="0.5"/>
-              <Float value="0.5"/>
-              <Listeners/>
+              <Float value="0.4995"/>
+              <Float value="0.5015"/>
+              <Float value="0.372"/>
             </revealed_center>
             <revealed_extent>
-              <Float value="1"/>
-              <Float value="1"/>
-              <Float value="1"/>
-              <Listeners/>
+              <Float value="0.997"/>
+              <Float value="0.993"/>
+              <Float value="0.002"/>
             </revealed_extent>
             <revealed_color>
-              <Float value="nan"/>
-              <Float value="nan"/>
-              <Float value="nan"/>
-              <Listeners/>
+              <Float value="0.149125"/>
+              <Float value="0.149125"/>
+              <Float value="0.149125"/>
             </revealed_color>
             <revealed_blob>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
-              <Float value="0"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.02"/>
+              <Float value="0.035"/>
+              <Float value="0.029"/>
+              <Float value="0.023"/>
+              <Float value="0.019"/>
+              <Float value="0.023"/>
+              <Float value="0.019"/>
+              <Float value="0.019"/>
+              <Float value="0.019"/>
+              <Float value="0.023"/>
+              <Float value="0.019"/>
+              <Float value="0.019"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.177"/>
+              <Float value="0.281"/>
+              <Float value="0.145"/>
+              <Float value="0.054"/>
+              <Float value="0.023"/>
+              <Float value="0.022"/>
+              <Float value="0.023"/>
+              <Float value="0.027"/>
+              <Float value="0.03"/>
+              <Float value="0.026"/>
+              <Float value="0.025"/>
+              <Float value="0.03"/>
+              <Float value="0.358"/>
+              <Float value="0.461"/>
+              <Float value="0.465"/>
+              <Float value="0.417"/>
+              <Float value="0.058"/>
+              <Float value="0.034"/>
+              <Float value="0.031"/>
+              <Float value="0.027"/>
+              <Float value="0.031"/>
+              <Float value="0.027"/>
+              <Float value="0.022"/>
+              <Float value="0.027"/>
+              <Float value="0.027"/>
+              <Float value="0.103"/>
+              <Float value="0.367"/>
+              <Float value="0.756"/>
+              <Float value="0.614"/>
+              <Float value="0.026"/>
+              <Float value="0.026"/>
+              <Float value="0.025"/>
+              <Float value="0.039"/>
+              <Float value="0.028"/>
+              <Float value="0.033"/>
+              <Float value="0.027"/>
+              <Float value="0.034"/>
+              <Float value="0.343"/>
+              <Float value="0.276"/>
+              <Float value="0.283"/>
+              <Float value="0.365"/>
+              <Float value="0.86"/>
+              <Float value="0.03"/>
+              <Float value="0.032"/>
+              <Float value="0.024"/>
+              <Float value="0.019"/>
+              <Float value="0.028"/>
+              <Float value="0.023"/>
+              <Float value="0.019"/>
+              <Float value="0.023"/>
+              <Float value="0.028"/>
+              <Float value="0.043"/>
+              <Float value="0.026"/>
+              <Float value="0.002"/>
+              <Float value="0.026"/>
+              <Float value="0.018"/>
+              <Float value="0.022"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.018"/>
+              <Float value="0.016"/>
+              <Float value="0.016"/>
+              <Float value="0.015"/>
+              <Float value="0.02"/>
+              <Float value="0.02"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.02"/>
+              <Float value="0.02"/>
+              <Float value="0.028"/>
+              <Float value="0.018"/>
+              <Float value="0.023"/>
+              <Float value="0.018"/>
+              <Float value="0.021"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.028"/>
+              <Float value="0.028"/>
+              <Float value="0.023"/>
               <Float value="0"/>
               <Float value="0"/>
               <Listeners>

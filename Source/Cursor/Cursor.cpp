@@ -3,6 +3,7 @@
 #include "Osc.h"
 
 using namespace juce;
+using namespace std;
 
 Cursor::Cursor(const juce::String& name, const int& updateRate):m_name(name) 
 {
@@ -20,6 +21,8 @@ void Cursor::initialise (float pos[], float speed[],
     m_time=0;
     m_duration=duration;
 
+    //cout<<"init "<<m_name<<" with "<<points.size()<<" points"<<endl;
+
     Osc* osc = Osc::getInstance();
     //clear vertices
     osc->sendOSCMessage("/revil/spaces/space/"+m_name+"/clear_vertices",0);
@@ -32,6 +35,11 @@ void Cursor::initialise (float pos[], float speed[],
                    points[i-1].x, points[i-1].y, 0);
         osc->sendOSCMessage("/revil/spaces/space/"+m_name+"/add_vertex", 
                    points[i].x, points[i].y, 0);
+/*
+        cout<<"adding points "<<points[0].x<<" "<<points[0].y<<endl;
+        cout<<"adding points "<<points[i-1].x<<" "<<points[i-1].y<<endl;
+        cout<<"adding points "<<points[i].x<<" "<<points[i].y<<endl;
+        */
     }
     //initialize position
     osc->sendOSCMessage("/revil/spaces/space/"+m_name+"/position",

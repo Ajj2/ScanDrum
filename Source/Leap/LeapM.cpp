@@ -119,7 +119,7 @@ void LeapM::timerCallback()
         std::vector<std::vector<cv::Point> > contours;
         cv::findContours(threshImg, contours, CV_RETR_EXTERNAL,
                          CV_CHAIN_APPROX_SIMPLE, cv::Point(0,0));
-        for(unsigned int c=0; c<contours.size(); c++)
+        for(unsigned int c=0; c<contours.size() && c<1; c++)
         {
             if(contours[c].size()>100)
             {
@@ -127,6 +127,11 @@ void LeapM::timerCallback()
                 convexHull(cv::Mat(contours[c]), hull[c], false);
                 cv::drawContours(leapImg, hull, c,
                                  cv::Scalar(255));
+                //center points
+                for(int p=0; p<hull[c].size(); ++p) {
+                    hull[c][p].x = hull[c][p].x-img.width()/2;
+                    hull[c][p].y = hull[c][p].y-img.height()/2;
+                }
                         
                 if(gotOnset.get() == 1)
                 {

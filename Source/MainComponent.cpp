@@ -118,7 +118,7 @@ public:
             static int counter = 0;
             if(onsetOut->data[0] != 0)
             {
-                std::cout << "got onset " << counter++ << std::endl;
+                //std::cout << "got onset " << counter++ << std::endl;
                 
                 // Send the current coordinates from the leap class
                 sendActionMessage("onsetDetected");
