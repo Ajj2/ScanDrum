@@ -50,7 +50,7 @@ public:
         
         for (int i = 0; i < 8; i++)
         {
-            filterBankFreq[i] = 50;
+            filterBankFreq[i] = 0;
         }
     }
 
@@ -64,6 +64,7 @@ public:
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override
     {
+        Sr = sampleRate;
         hopSize = samplesPerBlockExpected/4;
         onsetIn = new_fvec(hopSize);
         onsetOut = new_fvec(2);
@@ -78,11 +79,7 @@ public:
         
         env.initialise(sampleRate);
         env.set(Envelope::Points(0, 0)(1, 1)(2, 0), sampleRate);
-        
-        coeff = IIRCoefficients::makeHighPass(sampleRate, 200);
-        filter.setCoefficients(coeff);
-        filter.reset();
-        
+    
         varDelay.prepareToPlay(samplesPerBlockExpected, sampleRate);
         varDelay.setOutGain(1);
         varDelay.setModWaveShape(VarDelay::sine);
@@ -102,7 +99,7 @@ public:
         
         for (int i = 0 ; i < 8; i++)
         {
-            multiFilter.addFilter(sampleRate, (i+1)*500, 10);
+            multiFilter.addFilter(sampleRate, 50, 2);
         }
         multiFilter.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
@@ -126,12 +123,19 @@ public:
                 // Send the current coordinates from the leap class
                 
                 sendActionMessage("onsetDetected");
+                env.set(Envelope::Points(0, 0)(1, 1)(2, 0), Sr);
             }
         }
         
-        for (int filter = 0; filter < 8; filter++)
+        for (int filter_ = 0; filter_ < 8; filter_++)
         {
-            multiFilter.setFilerFreq(filter, filterBankFreq[filter].get(), 10);
+            float freqToSet = filterBankFreq[filter_].get();
+            if (freqToSet > 0)
+            {
+                {
+                    multiFilter.setFilerFreq(filter_, freqToSet, 1.2);
+                }
+            }
         }
         
         float* outP = bufferToFill.buffer->getWritePointer(0);
@@ -142,9 +146,7 @@ public:
 //            stk::StkFloat data = sine.tick();
 //            *outP = data;
             
-            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5;
-            //*outP = filter.processSingleSampleRaw(*outP) * env.tick();
-        
+            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 ;//* env.tick();;
             outP++;
         }
         
@@ -169,25 +171,25 @@ public:
                     filterBankFreq[0] = (value * 9950.0) + 50.0;
                     break;
                 case 78:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[1] = (value * 9950.0) + 50.0;
                     break;
                 case 79:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[2] = (value * 9950.0) + 50.0;
                     break;
                 case 80:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[3] = (value * 9950.0) + 50.0;
                     break;
                 case 81:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[4] = (value * 9950.0) + 50.0;
                     break;
                 case 82:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[5] = (value * 9950.0) + 50.0;
                     break;
                 case 83:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[6] = (value * 9950.0) + 50.0;
                     break;
                 case 84:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    filterBankFreq[7] = (value * 9950.0) + 50.0;
                     break;
                 default:
                     break;
@@ -223,17 +225,16 @@ private:
     stk::SineWave sine;
     Envelope env;
     
-    Random myRand;
-    
-    IIRFilter filter;
-    IIRCoefficients coeff;
+    juce::Random myRand;
     
     MultibandFilter multiFilter;
     
     VarDelay varDelay;
     Mixer mixer;
     
-    Atomic<float> filterBankFreq[8];
+    int Sr;
+    
+    juce::Atomic<float> filterBankFreq[8];
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
