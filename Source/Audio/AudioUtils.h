@@ -263,6 +263,10 @@ private:
     juce::Array<juce::AudioBuffer<float>> scratchBuffers;
     juce::Array<juce::AudioSampleBuffer> inputSampleB;
     
+    juce::Atomic<float> filterBankFreq[8];
+    const static int numFilters = 8;
+    float filterRef[numFilters];
+    
     int Sr;
 };
 

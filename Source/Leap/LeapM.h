@@ -12,7 +12,6 @@
 #define LEAPM_H_INCLUDED
 
 #include <deque>
-
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include <LeapMath.h>
 #include <Leap.h>
@@ -55,7 +54,7 @@ private:
     double m_currentTime;
     double m_prevTime;
     
-    const int maxNumCursors = 3;
+    const int maxNumCursors = 8;
     
     std::deque<Cursor*> inactiveCursors;
     std::deque<Cursor*> activeCursors;

@@ -47,11 +47,6 @@ public:
     
         deviceManager.addMidiInputCallback(String::empty, this);
         deviceManager.setMidiInputEnabled("Launch Control XL", true);
-        
-        for (int i = 0; i < 8; i++)
-        {
-            filterBankFreq[i] = 0;
-        }
     }
 
     ~MainContentComponent()
@@ -84,9 +79,9 @@ public:
         varDelay.setOutGain(1);
         varDelay.setModWaveShape(VarDelay::sine);
         varDelay.setParameter(VarDelay::delayTimeP, 0.1);
-        varDelay.setParameter(VarDelay::feedbackP, 0.9);
+        varDelay.setParameter(VarDelay::feedbackP, 0.95);
         varDelay.setParameter(VarDelay::mixP, 0.5);
-        varDelay.setParameter(VarDelay::modSpeedP, 0.5);
+        varDelay.setParameter(VarDelay::modSpeedP, 0.05);
         varDelay.setParameter(VarDelay::modDepthP, 0.8);
         
 //        mixer.prepareToPlay(samplesPerBlockExpected, sampleRate);
@@ -118,25 +113,16 @@ public:
             static int counter = 0;
             if(onsetOut->data[0] != 0)
             {
-                //std::cout << "got onset " << counter++ << std::endl;
+                std::cout << "got onset " << counter++ << std::endl;
                 
                 // Send the current coordinates from the leap class
                 sendActionMessage("onsetDetected");
+                
+                // Signal that a new multiFilter should be created 
                 env.set(Envelope::Points(0, 0)(1, 1)(2, 0), Sr);
             }
         }
-        
-        for (int filter_ = 0; filter_ < 8; filter_++)
-        {
-            float freqToSet = filterBankFreq[filter_].get();
-            if (freqToSet > 0)
-            {
-                {
-                    multiFilter.setFilerFreq(filter_, freqToSet, 1.2);
-                }
-            }
-        }
-        
+    
         float* outP = bufferToFill.buffer->getWritePointer(0);
         int numSamples = bufferToFill.numSamples;
         
@@ -145,13 +131,13 @@ public:
 //            stk::StkFloat data = sine.tick();
 //            *outP = data;
             
-            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 * env.tick();;
+            *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 ;//* env.tick();;
             outP++;
         }
         
         multiFilter.getNextAudioBlock(bufferToFill);
         
-        varDelay.getNextAudioBlock(bufferToFill);
+        //varDelay.getNextAudioBlock(bufferToFill);
         //mixer.getNextAudioBlock(bufferToFill);
     }
     
@@ -167,45 +153,34 @@ public:
             switch (message.getControllerNumber())
             {
                 case 77:
-                    filterBankFreq[0] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(0, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 78:
-                    filterBankFreq[1] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(1, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 79:
-                    filterBankFreq[2] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(2, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 80:
-                    filterBankFreq[3] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(3, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 81:
-                    filterBankFreq[4] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(4, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 82:
-                    filterBankFreq[5] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(5, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 83:
-                    filterBankFreq[6] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(6, (value * 9950.0) + 100.0, 1.2);
                     break;
                 case 84:
-                    filterBankFreq[7] = (value * 9950.0) + 50.0;
+                    multiFilter.setFilerFreq(7, (value * 9950.0) + 100.0, 1.2);
                     break;
                 default:
                     break;
             }
         }
-    }
-    
-    //==============================================================================
-    
-    void setFilterBankFreq (int index, float newFreq)
-    {
-        if (index > 0 && index < multiFilter.getNumFilters()-1)
-        {
-            filterBankFreq[index] = newFreq;
-        }
-    }
-    
+    }    
     //==============================================================================
     void paint (Graphics& g) override
     {
@@ -241,8 +216,6 @@ private:
     Mixer mixer;
     
     int Sr;
-    
-    juce::Atomic<float> filterBankFreq[8];
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };

@@ -121,6 +121,7 @@ void LeapM::timerCallback()
                          CV_CHAIN_APPROX_SIMPLE, cv::Point(0,0));
         for(unsigned int c=0; c<contours.size() && c<1; c++)
         {
+            
             if(contours[c].size()>100)
             {
                 std::vector<std::vector<cv::Point> > hull(contours.size());
@@ -151,7 +152,9 @@ void LeapM::timerCallback()
                     // initialise the new or moved one
                     float pos[3]={0,0,0};
                     float speed[3]={0,0,10};
-                    activeCursors.back()->initialise(pos, speed, 1000, hull[c]);
+                    activeCursors.back()->initialise(pos, speed, 2000, hull[c], (float)meanValue[0]);
+                    
+                    
                     gotOnset = 0;
                 }
             }

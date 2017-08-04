@@ -5,13 +5,13 @@
 using namespace juce;
 using namespace std;
 
-Cursor::Cursor(const juce::String& name, const int& updateRate):m_name(name) 
+Cursor::Cursor(const juce::String& name, const int& updateRate):m_name(name) , m_updateRate(updateRate)
 {
 
 }
 
 void Cursor::initialise (float pos[], float speed[], 
-                         const long& duration, std::vector<cv::Point>& points) 
+                         const long& duration, std::vector<cv::Point>& points, float avBrightness)
 {
     for(int i=0;i<3;++i) 
     {
@@ -20,7 +20,10 @@ void Cursor::initialise (float pos[], float speed[],
     }
     m_time=0;
     m_duration=duration;
-
+    m_avBrightness = avBrightness;
+    
+    DBG (m_name << " - m_avBrightness: " << m_avBrightness);
+    
     //cout<<"init "<<m_name<<" with "<<points.size()<<" points"<<endl;
 
     Osc* osc = Osc::getInstance();
@@ -35,11 +38,10 @@ void Cursor::initialise (float pos[], float speed[],
                    points[i-1].x, points[i-1].y, 0);
         osc->sendOSCMessage("/revil/spaces/space/"+m_name+"/add_vertex", 
                    points[i].x, points[i].y, 0);
-/*
+        /*
         cout<<"adding points "<<points[0].x<<" "<<points[0].y<<endl;
         cout<<"adding points "<<points[i-1].x<<" "<<points[i-1].y<<endl;
-        cout<<"adding points "<<points[i].x<<" "<<points[i].y<<endl;
-        */
+        cout<<"adding points "<<points[i].x<<" "<<points[i].y<<"\n"<<endl; */
     }
     //initialize position
     osc->sendOSCMessage("/revil/spaces/space/"+m_name+"/position",
@@ -50,7 +52,6 @@ bool Cursor::update(const long& time)
 {
   bool done=false;
   m_time+=time;
-  DBG ("m_time: " << m_time);
   if(m_time>m_duration) 
   {
     done=true;
