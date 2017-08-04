@@ -22,8 +22,6 @@ void Cursor::initialise (float pos[], float speed[],
     m_duration=duration;
     m_avBrightness = avBrightness;
     
-    DBG (m_name << " - m_avBrightness: " << m_avBrightness);
-    
     //cout<<"init "<<m_name<<" with "<<points.size()<<" points"<<endl;
 
     Osc* osc = Osc::getInstance();

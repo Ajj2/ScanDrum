@@ -19,7 +19,8 @@
 #include "AudioUtils.h"
 
 class Audio : public AudioAppComponent,
-              public MidiInputCallback
+              public MidiInputCallback,
+              public ActionBroadcaster
 {
 public:
     
@@ -36,6 +37,8 @@ public:
     //==============================================================================
     
     void handleIncomingMidiMessage(MidiInput *source, const MidiMessage& message) override;
+    
+    void newCursorCreated (String& name);
     
 private:
     

@@ -86,7 +86,7 @@ void Audio::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
             std::cout << "got onset " << counter++ << std::endl;
             
             // Send the current coordinates from the leap class
-            //sendActionMessage("onsetDetected");
+            sendActionMessage("onsetDetected");
             
             // Signal that a new multiFilter should be created
             env.set(Envelope::Points(0, 0)(1, 1)(2, 0), Sr);
@@ -152,4 +152,11 @@ void Audio::handleIncomingMidiMessage(MidiInput *source, const MidiMessage& mess
                 break;
         }
     }
+}
+
+//==============================================================================
+
+void Audio::newCursorCreated (String& name)
+{
+    
 }

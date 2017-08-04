@@ -19,6 +19,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "Osc.h"
 #include "Cursor.h"
+#include "Audio.h"
 
 //==============================================================================
 /*
@@ -28,7 +29,7 @@ class LeapM    : public juce::Component,
                  public juce::ActionListener 
 {
 public:
-    LeapM(Osc& oscRef_);
+    LeapM(Audio& audioRef_);
     ~LeapM();
 
     void paint (juce::Graphics&) override;
@@ -41,13 +42,12 @@ public:
     void actionListenerCallback (const juce::String &message) override;
 
 private:
+    Audio& audioRef;
     
     Leap::Controller controller;
     Leap::Frame currentFrame;
     
     juce::TextEditor textDisplay;
-    
-    Osc& oscRef;
     
     juce::Atomic<int> gotOnset;
     

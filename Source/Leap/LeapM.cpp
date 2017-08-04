@@ -15,7 +15,7 @@ using namespace juce;
 
 
 //==============================================================================
-LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), gotOnset (0)
+LeapM::LeapM(Audio& audioRef_) : audioRef(audioRef_), gotOnset (0)
 {
     addAndMakeVisible(textDisplay);
     textDisplay.setText("leap motion input data will appear here .. ");
@@ -33,7 +33,6 @@ LeapM::LeapM(Osc& oscRef_) : oscRef(oscRef_), gotOnset (0)
 
     m_prevTime = 0;
     m_currentTime = 0;
-    
      
     controller.setPolicy(Leap::Controller::POLICY_IMAGES);
     controller.setPolicy(Leap::Controller::POLICY_BACKGROUND_FRAMES);
@@ -80,7 +79,6 @@ void LeapM::timerCallback()
     
     //extract video
    
-    
     cv::namedWindow("Leap", CV_WINDOW_NORMAL);
     Leap::Image img = controller.images()[0];
     
@@ -154,6 +152,7 @@ void LeapM::timerCallback()
                     float speed[3]={0,0,10};
                     activeCursors.back()->initialise(pos, speed, 2000, hull[c], (float)meanValue[0]);
                     
+                    audioRef.newCursorCreated(activeCursors.back()->getName());
                     
                     gotOnset = 0;
                 }

@@ -12,19 +12,15 @@
 MainContentComponent::MainContentComponent(Audio& audio_) : audio(audio_)
 {
     osc = Osc::getInstance();
-    leapM = new LeapM (*osc);
+    leapM = new LeapM (audio);
     
     addAndMakeVisible(leapM);
+    audio.addActionListener(leapM);
     
-    addActionListener(leapM);
     setSize (800, 600);
 }
 
-MainContentComponent::~MainContentComponent()
-{
-    delete osc;
-    delete leapM;
-}
+MainContentComponent::~MainContentComponent(){}
 
 //==============================================================================
 void MainContentComponent::paint (Graphics& g)

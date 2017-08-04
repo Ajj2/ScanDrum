@@ -39,8 +39,9 @@ public:
 private:
     //==============================================================================
     Audio& audio;
-    Osc* osc;
-    LeapM* leapM;
+    
+    ScopedPointer<Osc> osc;
+    ScopedPointer<LeapM> leapM;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
