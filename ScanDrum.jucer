@@ -9,6 +9,8 @@
       <FILE id="sjjwPB" name="Cursor.h" compile="0" resource="0" file="Source/Cursor/Cursor.h"/>
     </GROUP>
     <GROUP id="{50929940-B517-5B9C-43A8-0B791FAFDC11}" name="Audio">
+      <FILE id="XYhfjE" name="Audio.cpp" compile="1" resource="0" file="Source/Audio/Audio.cpp"/>
+      <FILE id="V97QR4" name="Audio.h" compile="0" resource="0" file="Source/Audio/Audio.h"/>
       <FILE id="Ahg8cS" name="AudioUtils.cpp" compile="1" resource="0" file="Source/Audio/AudioUtils.cpp"/>
       <FILE id="KW4p31" name="AudioUtils.h" compile="0" resource="0" file="Source/Audio/AudioUtils.h"/>
       <FILE id="XPj9Ih" name="Mixer.cpp" compile="1" resource="0" file="Source/Audio/Mixer.cpp"/>
@@ -27,6 +29,7 @@
       <FILE id="YQ0I3x" name="Osc.h" compile="0" resource="0" file="Source/Osc/Osc.h"/>
     </GROUP>
     <GROUP id="{F2A58BBC-50DC-184B-6115-B030719D428E}" name="Source">
+      <FILE id="PBcVwQ" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="df924W" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="hOil6u" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>

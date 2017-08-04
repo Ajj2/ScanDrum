@@ -9,8 +9,10 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Audio.h"
+#include "MainComponent.h"
 
-juce::Component* createMainContentComponent();
+//juce::Component* createMainContentComponent();
 
 //==============================================================================
 class ScanDrumApplication  : public juce::JUCEApplication
@@ -28,7 +30,7 @@ public:
     {
         // This method is where you should put your application's initialisation code..
 
-        mainWindow = new MainWindow (getApplicationName());
+        mainWindow = new MainWindow (getApplicationName(), audio);
     }
 
     void shutdown() override
@@ -61,12 +63,12 @@ public:
     class MainWindow    : public juce::DocumentWindow
     {
     public:
-        MainWindow (juce::String name)  : juce::DocumentWindow (name,
+        MainWindow (juce::String name, Audio& audio)  : juce::DocumentWindow (name,
                                             juce::Colours::lightgrey,
                                             juce::DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
-            setContentOwned (createMainContentComponent(), true);
+            setContentOwned (new MainContentComponent(audio), true);
             setResizable (true, true);
 
             centreWithSize (getWidth(), getHeight());
@@ -94,6 +96,7 @@ public:
 
 private:
     juce::ScopedPointer<MainWindow> mainWindow;
+    Audio audio;
 };
 
 //==============================================================================
