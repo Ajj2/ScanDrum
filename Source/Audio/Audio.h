@@ -18,9 +18,9 @@
 #include "Mixer.h"
 #include "AudioUtils.h"
 
-class Audio : public AudioAppComponent,
-              public MidiInputCallback,
-              public ActionBroadcaster
+class Audio : public juce::AudioAppComponent,
+              public juce::MidiInputCallback,
+              public juce::ActionBroadcaster
 {
 public:
     
@@ -30,15 +30,15 @@ public:
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
     
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     void releaseResources() override;
     
     //==============================================================================
     
-    void handleIncomingMidiMessage(MidiInput *source, const MidiMessage& message) override;
+    void handleIncomingMidiMessage(juce::MidiInput *source, const juce::MidiMessage& message) override;
     
-    void newCursorCreated (String& name);
+    void newCursorCreated (juce::String& name);
     
 private:
     

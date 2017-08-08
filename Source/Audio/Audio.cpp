@@ -10,6 +10,8 @@
 
 #include "Audio.h"
 
+using namespace juce;
+
 Audio::Audio() : varDelay (1), mixer (1)
 {
     setAudioChannels(1, 2);
