@@ -5,7 +5,7 @@
 using namespace juce;
 using namespace std;
 
-Cursor::Cursor(const juce::String& name, const int& updateRate):m_name(name) , m_updateRate(updateRate)
+Cursor::Cursor(int index, const juce::String& name, const int& updateRate):m_name(name) , m_updateRate(updateRate), m_index (index)
 {
 
 }

@@ -19,8 +19,9 @@ MultibandFilter::MultibandFilter()
 {
     for (int i = 0; i < numFilters; i++)
     {
-        filterBankFreq[i] = 100;
+        filterBankFreq[i] = ((float)i+1.0) * 50;
         filterRef[i] = 100;
+        filterBankAmps[i] = 0.5;
     }
 }
 
@@ -103,12 +104,10 @@ void MultibandFilter::getNextAudioBlock (const juce::AudioSourceChannelInfo& buf
         {
             for (int p = 0; p < filterBank.size(); p++)
             {
-                if (p == 0)
-                {
-                    // Sum the contents into the mixedBuffer
-                    *writeP += *readPs[p];
-                    readPs[p]++;
-                }
+                // Sum the contents into the mixedBuffer
+                *writeP += *readPs[p] * filterBankAmps[p].get();
+                readPs[p]++;
+                
             }
             writeP++;
         }
@@ -137,3 +136,12 @@ void MultibandFilter::setFilerFreq (int index, double frequency, double Q)
 {
     filterBankFreq[index] = frequency;
 }
+
+void MultibandFilter::setFilterAmp (int index, float newAmp)
+{
+    if (index < numFilters && index >= 0);
+    {
+        filterBankAmps[index] = newAmp;
+    }
+}
+

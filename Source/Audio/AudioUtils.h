@@ -253,6 +253,7 @@ public:
     
     void addFilter (double sampleRate, double frequency, double Q);
     void setFilerFreq (int index, double frequency, double Q);
+    void setFilterAmp (int index, float newAmp);
     int getNumFilters () { return filterBank.size(); }
     
 private:
@@ -266,6 +267,8 @@ private:
     juce::Atomic<float> filterBankFreq[8];
     const static int numFilters = 8;
     float filterRef[numFilters];
+    
+    juce::Atomic<float>filterBankAmps[numFilters];
     
     int Sr;
 };

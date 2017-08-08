@@ -38,7 +38,7 @@ public:
     
     void handleIncomingMidiMessage(MidiInput *source, const MidiMessage& message) override;
     
-    void newCursorCreated (String& name);
+    void newCursorCreated (int index, String& name, float averageBrightness);
     
 private:
     
@@ -59,7 +59,6 @@ private:
     fvec_t* onsetOut;
     fvec_t* analysisBuffer;
     aubio_onset_t * onsetDetect;
-    
 };
 
 

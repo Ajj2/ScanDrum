@@ -28,7 +28,7 @@ LeapM::LeapM(Audio& audioRef_) : audioRef(audioRef_), gotOnset (0)
     for (int i  = 0; i < maxNumCursors; i++)
     {
         String name = "cursor" + (String)i;
-        inactiveCursors.push_front(new Cursor(name, updateRate));
+        inactiveCursors.push_front(new Cursor(i, name, updateRate));
     }
 
     m_prevTime = 0;
@@ -113,6 +113,9 @@ void LeapM::timerCallback()
         imshow("Leap", threshImg);
         cvWaitKey(10);
         
+        //avg brightness
+        cv::Scalar avBri = cv::mean(threshImg);
+        
         //contours points
         std::vector<std::vector<cv::Point> > contours;
         cv::findContours(threshImg, contours, CV_RETR_EXTERNAL,
@@ -120,12 +123,13 @@ void LeapM::timerCallback()
         for(unsigned int c=0; c<contours.size() && c<1; c++)
         {
             
-            if(contours[c].size()>100)
-            {
+//            if(contours[c].size()>100)
+//            {
                 std::vector<std::vector<cv::Point> > hull(contours.size());
                 convexHull(cv::Mat(contours[c]), hull[c], false);
                 cv::drawContours(leapImg, hull, c,
                                  cv::Scalar(255));
+                
                 //center points
                 for(int p=0; p<hull[c].size(); ++p) {
                     hull[c][p].x = hull[c][p].x-img.width()/2;
@@ -152,11 +156,11 @@ void LeapM::timerCallback()
                     float speed[3]={0,0,10};
                     activeCursors.back()->initialise(pos, speed, 2000, hull[c], (float)meanValue[0]);
                     
-                    audioRef.newCursorCreated(activeCursors.back()->getName());
+                    audioRef.newCursorCreated(activeCursors.back()->getIndex(), activeCursors.back()->getName(), avBri[0]);
                     
                     gotOnset = 0;
                 }
-            }
+//            }
         }
     }
     for (int i = 0; i < activeCursors.size(); i++)

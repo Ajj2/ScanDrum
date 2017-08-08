@@ -101,7 +101,7 @@ void Audio::getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill)
         //            stk::StkFloat data = sine.tick();
         //            *outP = data;
         
-        *outP = ((myRand.nextFloat() * 2.0) - 1.0) * 0.5 ;//* env.tick();;
+        *outP = ((myRand.nextFloat() * 2.0) - 1.0); //* env.tick();;
         outP++;
     }
     
@@ -156,7 +156,7 @@ void Audio::handleIncomingMidiMessage(MidiInput *source, const MidiMessage& mess
 
 //==============================================================================
 
-void Audio::newCursorCreated (String& name)
+void Audio::newCursorCreated (int index, String& name, float averageBrightness)
 {
-    
+    multiFilter.setFilterAmp(index, (averageBrightness / 100.0));
 }
