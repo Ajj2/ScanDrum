@@ -1,75 +1,103 @@
-#N canvas 3 587 954 467 10;
-#X obj 20 134 select 0 1;
-#X msg 20 151 disconnect;
-#X obj 67 202 spigot;
-#X obj 19 50 tgl 50 0 empty empty empty 17 7 0 10 -258113 -1 -1 0 1
-;
-#X obj 20 117 t f f f;
-#X obj 67 185 r toRevil;
-#X msg 20 168 connect 127.0.0.1 8327;
-#X obj 19 100 loadbang;
-#X obj 67 219 list prepend send;
-#X obj 67 236 list trim;
-#X obj 20 253 netsend -u -b;
-#X obj 241 288 oscparse;
-#X obj 241 271 netreceive -u -b 7000;
-#X obj 587 248 s toRevil;
-#X obj 218 158 s toRevil;
-#X obj 249 214 s toRevil;
-#X msg 249 180 0 0 0;
-#X msg 299 180 0 100 0;
-#X msg 359 180 100 100 0;
-#X obj 590 198 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 12700 1;
-#X msg 587 214 0 0 \$1;
-#X obj 241 305 list split 3;
-#X obj 241 322 route list;
-#X obj 18 350 array define curs1blob;
-#X obj 347 407 array set curs1blob;
-#X obj 587 181 line;
-#X msg 587 164 -200;
-#X obj 213 86 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 5;
-#X msg 622 164 200 \$1;
-#X obj 587 147 t f b;
-#X obj 347 356 list prepend;
-#X obj 347 390 route cursor1 cursor2 cursor3;
-#X obj 347 373 list trim;
-#X obj 566 356 list prepend;
-#X obj 566 390 route cursor1 cursor2 cursor3;
-#X obj 566 373 list trim;
-#X obj 241 339 route revealed_name revealed_blob revealed_inside;
-#X obj 566 407 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 3 94 954 983 10;
+#X obj 8 18 cnv 15 900 500 empty empty Emulation_ScanDrum 20 12 0 14
+-261682 -66577 0;
+#X obj 20 174 select 0 1;
+#X msg 20 191 disconnect;
+#X obj 67 242 spigot;
+#X obj 20 105 tgl 50 0 empty empty empty 17 7 0 10 -258113 -1 -1 0
 1;
-#X obj 213 112 t f b b b b;
-#X obj 587 130 expr $f1*50+50;
-#X text 208 53 Create and move cursor;
-#X text 5 26 Connect to revil;
-#X obj 218 141 oscformat revil spaces space cursor1 clear_vertices
+#X obj 20 157 t f f f;
+#X obj 67 225 r toRevil;
+#X msg 20 208 connect 127.0.0.1 8327;
+#X obj 67 259 list prepend send;
+#X obj 67 276 list trim;
+#X obj 20 293 netsend -u -b;
+#X obj 241 298 oscparse;
+#X obj 241 281 netreceive -u -b 7000;
+#X obj 587 257 s toRevil;
+#X obj 218 168 s toRevil;
+#X obj 199 219 s toRevil;
+#X msg 199 185 0 0 0;
+#X msg 249 185 0 100 0;
+#X msg 309 185 100 100 0;
+#X obj 590 207 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X msg 587 223 0 0 \$1;
+#X obj 241 315 list split 3;
+#X obj 241 332 route list;
+#X obj 244 454 array define curs1blob;
+#X obj 347 417 array set curs1blob;
+#X obj 587 190 line;
+#X msg 587 173 -200;
+#X obj 213 96 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
+-1 5;
+#X msg 622 173 200 \$1;
+#X obj 587 156 t f b;
+#X obj 347 366 list prepend;
+#X obj 347 400 route cursor1 cursor2 cursor3;
+#X obj 347 383 list trim;
+#X obj 566 366 list prepend;
+#X obj 566 400 route cursor1 cursor2 cursor3;
+#X obj 566 383 list trim;
+#X obj 241 349 route revealed_name revealed_blob revealed_inside;
+#X obj 566 417 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 213 122 t f b b b b;
+#X obj 587 139 expr $f1*50+50;
+#X text 16 81 Connect to revil;
+#X obj 218 151 oscformat revil spaces space cursor1 clear_vertices
 ;
-#X obj 249 197 oscformat -f fff revil spaces space cursor1 add_vertex
+#X obj 199 202 oscformat -f fff revil spaces space cursor1 add_vertex
 ;
-#X obj 587 231 oscformat -f fff revil spaces space cursor1 position
+#X obj 527 240 oscformat -f fff revil spaces space cursor1 position
 ;
-#X connect 0 0 1 0;
-#X connect 0 1 6 0;
-#X connect 1 0 10 0;
-#X connect 2 0 8 0;
-#X connect 3 0 4 0;
-#X connect 4 0 0 0;
-#X connect 4 1 2 1;
-#X connect 5 0 2 0;
-#X connect 6 0 10 0;
-#X connect 7 0 3 0;
+#X obj 8 528 cnv 15 900 400 empty empty Emulation_Revil 20 12 0 14
+-204786 -66577 0;
+#X text 208 63 Create and move cursor 1;
+#X obj 20 683 select 0 1;
+#X msg 20 700 disconnect;
+#X obj 67 751 spigot;
+#X obj 20 614 tgl 50 0 empty empty empty 17 7 0 10 -258113 -1 -1 0
+1;
+#X obj 20 666 t f f f;
+#X obj 67 768 list prepend send;
+#X obj 67 785 list trim;
+#X obj 20 802 netsend -u -b;
+#X text 16 590 Connect to scandrum;
+#X msg 20 717 connect 127.0.0.1 7000;
+#X obj 67 734 r toScan;
+#X obj 230 556 oscparse;
+#X obj 230 573 list split 3;
+#X obj 230 590 route list;
+#X obj 298 717 array set curs1blob;
+#X obj 298 666 list prepend;
+#X obj 298 700 route cursor1 cursor2 cursor3;
+#X obj 298 683 list trim;
+#X obj 517 666 list prepend;
+#X obj 517 700 route cursor1 cursor2 cursor3;
+#X obj 517 683 list trim;
+#X obj 517 717 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 230 539 netreceive -u -b 8327;
+#X obj 230 607 route cursor1 cursor2;
+#X connect 1 0 2 0;
+#X connect 1 1 7 0;
+#X connect 2 0 10 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 5 1 3 1;
+#X connect 6 0 3 0;
+#X connect 7 0 10 0;
 #X connect 8 0 9 0;
 #X connect 9 0 10 0;
 #X connect 11 0 21 0;
 #X connect 12 0 11 0;
-#X connect 16 0 43 0;
-#X connect 17 0 43 0;
-#X connect 18 0 43 0;
+#X connect 16 0 42 0;
+#X connect 17 0 42 0;
+#X connect 18 0 42 0;
 #X connect 19 0 20 0;
-#X connect 20 0 44 0;
+#X connect 20 0 43 0;
 #X connect 21 1 22 0;
 #X connect 22 0 36 0;
 #X connect 25 0 19 0;
@@ -92,8 +120,29 @@
 #X connect 38 1 18 0;
 #X connect 38 2 17 0;
 #X connect 38 3 16 0;
-#X connect 38 4 42 0;
+#X connect 38 4 41 0;
 #X connect 39 0 29 0;
-#X connect 42 0 14 0;
-#X connect 43 0 15 0;
-#X connect 44 0 13 0;
+#X connect 41 0 14 0;
+#X connect 42 0 15 0;
+#X connect 43 0 13 0;
+#X connect 46 0 47 0;
+#X connect 46 1 55 0;
+#X connect 47 0 53 0;
+#X connect 48 0 51 0;
+#X connect 49 0 50 0;
+#X connect 50 0 46 0;
+#X connect 50 1 48 1;
+#X connect 51 0 52 0;
+#X connect 52 0 53 0;
+#X connect 55 0 53 0;
+#X connect 56 0 48 0;
+#X connect 57 0 58 0;
+#X connect 58 1 59 0;
+#X connect 59 0 69 0;
+#X connect 61 0 63 0;
+#X connect 62 0 60 0;
+#X connect 63 0 62 0;
+#X connect 64 0 66 0;
+#X connect 65 0 67 0;
+#X connect 66 0 65 0;
+#X connect 68 0 57 0;

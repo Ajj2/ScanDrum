@@ -57,7 +57,7 @@
                   <Listeners/>
                 </remove>
                 <visible>
-                  <Bool value="1"/>
+                  <Bool value="0"/>
                   <Listeners/>
                 </visible>
                 <shape>
@@ -73,7 +73,7 @@
                 <position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="286.4"/>
+                  <Float value="314.1"/>
                   <Listeners/>
                 </position>
                 <scale>
@@ -98,7 +98,7 @@
                 <absolute_position>
                   <Float value="0"/>
                   <Float value="0"/>
-                  <Float value="286.4"/>
+                  <Float value="314.1"/>
                 </absolute_position>
               </Attributes>
             </DepthShape>
@@ -309,8 +309,8 @@
                   <Bool value="1"/>
                 </active>
                 <window_dimensions>
-                  <Int value="516"/>
-                  <Int value="230"/>
+                  <Int value="368"/>
+                  <Int value="249"/>
                   <Int value="640"/>
                   <Int value="480"/>
                 </window_dimensions>
@@ -539,119 +539,119 @@
               </Listeners>
             </revealed_inside>
             <revealed_center>
-              <Float value="0.4995"/>
+              <Float value="0.4975"/>
               <Float value="0.5015"/>
-              <Float value="0.372"/>
+              <Float value="0.428"/>
             </revealed_center>
             <revealed_extent>
-              <Float value="0.997"/>
-              <Float value="0.993"/>
+              <Float value="0.995"/>
+              <Float value="0.995"/>
               <Float value="0.002"/>
             </revealed_extent>
             <revealed_color>
-              <Float value="0.149125"/>
-              <Float value="0.149125"/>
-              <Float value="0.149125"/>
+              <Float value="0.153082"/>
+              <Float value="0.153082"/>
+              <Float value="0.153082"/>
             </revealed_color>
             <revealed_blob>
               <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.02"/>
-              <Float value="0.035"/>
-              <Float value="0.029"/>
-              <Float value="0.023"/>
-              <Float value="0.019"/>
-              <Float value="0.023"/>
-              <Float value="0.019"/>
-              <Float value="0.019"/>
-              <Float value="0.019"/>
-              <Float value="0.023"/>
-              <Float value="0.019"/>
-              <Float value="0.019"/>
-              <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.177"/>
-              <Float value="0.281"/>
-              <Float value="0.145"/>
-              <Float value="0.054"/>
-              <Float value="0.023"/>
               <Float value="0.022"/>
-              <Float value="0.023"/>
-              <Float value="0.027"/>
               <Float value="0.03"/>
-              <Float value="0.026"/>
-              <Float value="0.025"/>
-              <Float value="0.03"/>
-              <Float value="0.358"/>
-              <Float value="0.461"/>
-              <Float value="0.465"/>
-              <Float value="0.417"/>
-              <Float value="0.058"/>
-              <Float value="0.034"/>
-              <Float value="0.031"/>
-              <Float value="0.027"/>
-              <Float value="0.031"/>
-              <Float value="0.027"/>
               <Float value="0.022"/>
-              <Float value="0.027"/>
-              <Float value="0.027"/>
-              <Float value="0.103"/>
-              <Float value="0.367"/>
-              <Float value="0.756"/>
-              <Float value="0.614"/>
-              <Float value="0.026"/>
-              <Float value="0.026"/>
-              <Float value="0.025"/>
-              <Float value="0.039"/>
-              <Float value="0.028"/>
-              <Float value="0.033"/>
-              <Float value="0.027"/>
-              <Float value="0.034"/>
-              <Float value="0.343"/>
-              <Float value="0.276"/>
-              <Float value="0.283"/>
-              <Float value="0.365"/>
-              <Float value="0.86"/>
-              <Float value="0.03"/>
-              <Float value="0.032"/>
-              <Float value="0.024"/>
-              <Float value="0.019"/>
-              <Float value="0.028"/>
-              <Float value="0.023"/>
-              <Float value="0.019"/>
-              <Float value="0.023"/>
-              <Float value="0.028"/>
-              <Float value="0.043"/>
-              <Float value="0.026"/>
-              <Float value="0.002"/>
-              <Float value="0.026"/>
-              <Float value="0.018"/>
-              <Float value="0.022"/>
-              <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.023"/>
-              <Float value="0.018"/>
+              <Float value="0.038"/>
               <Float value="0.016"/>
-              <Float value="0.016"/>
+              <Float value="0.008"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
               <Float value="0.015"/>
-              <Float value="0.02"/>
-              <Float value="0.02"/>
               <Float value="0.023"/>
+              <Float value="0.015"/>
+              <Float value="0.152"/>
+              <Float value="0.138"/>
+              <Float value="0.092"/>
+              <Float value="0.087"/>
+              <Float value="0.015"/>
+              <Float value="0.015"/>
+              <Float value="0.013"/>
+              <Float value="0.022"/>
+              <Float value="0.031"/>
+              <Float value="0.038"/>
+              <Float value="0.035"/>
+              <Float value="0.021"/>
+              <Float value="0.362"/>
+              <Float value="0.488"/>
+              <Float value="0.076"/>
+              <Float value="0.37"/>
+              <Float value="0.161"/>
+              <Float value="0.047"/>
+              <Float value="0.053"/>
+              <Float value="0.02"/>
+              <Float value="0.03"/>
+              <Float value="0.056"/>
+              <Float value="0.034"/>
+              <Float value="0.053"/>
               <Float value="0.023"/>
-              <Float value="0.02"/>
-              <Float value="0.02"/>
+              <Float value="0.277"/>
+              <Float value="0.804"/>
+              <Float value="0.291"/>
+              <Float value="0.04"/>
+              <Float value="0.045"/>
+              <Float value="0.024"/>
+              <Float value="0.024"/>
               <Float value="0.028"/>
-              <Float value="0.018"/>
+              <Float value="0.027"/>
+              <Float value="0.034"/>
+              <Float value="0.043"/>
+              <Float value="0.032"/>
+              <Float value="0.03"/>
+              <Float value="0.875"/>
+              <Float value="0.303"/>
+              <Float value="0.081"/>
+              <Float value="0.508"/>
+              <Float value="0.053"/>
+              <Float value="0.035"/>
+              <Float value="0.036"/>
+              <Float value="0.021"/>
+              <Float value="0.017"/>
               <Float value="0.023"/>
-              <Float value="0.018"/>
+              <Float value="0.015"/>
+              <Float value="0.016"/>
+              <Float value="0.023"/>
+              <Float value="0.25"/>
+              <Float value="0.017"/>
+              <Float value="0.022"/>
+              <Float value="0.023"/>
+              <Float value="0.022"/>
+              <Float value="0.022"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.016"/>
+              <Float value="0.024"/>
+              <Float value="0.024"/>
+              <Float value="0.024"/>
+              <Float value="0.024"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.016"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.023"/>
               <Float value="0.021"/>
               <Float value="0.023"/>
+              <Float value="0.016"/>
+              <Float value="0.022"/>
               <Float value="0.023"/>
-              <Float value="0.028"/>
-              <Float value="0.028"/>
+              <Float value="0.009"/>
               <Float value="0.023"/>
+              <Float value="0.023"/>
+              <Float value="0.025"/>
+              <Float value="0.023"/>
+              <Float value="0.022"/>
+              <Float value="0.022"/>
               <Float value="0"/>
               <Float value="0"/>
               <Listeners>
