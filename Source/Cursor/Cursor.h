@@ -25,8 +25,9 @@ public:
     void initialise(float pos[], float speed[],
                     const long& duration, std::vector<cv::Point>&, float avBrightness);
     bool update(const long& time);
-    String& getName () { return m_name; }
+    juce::String& getName () { return m_name; }
     int getIndex () { return m_index; }
+
 };
 
 #endif

@@ -10,6 +10,8 @@
 
 #include "Audio.h"
 
+using namespace juce;
+
 Audio::Audio() : varDelay (1), mixer (1)
 {
     setAudioChannels(1, 2);
@@ -160,3 +162,4 @@ void Audio::newCursorCreated (int index, String& name, float averageBrightness)
 {
     multiFilter.setFilterAmp(index, (averageBrightness / 100.0));
 }
+

@@ -30,15 +30,17 @@ public:
     //==============================================================================
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
     
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
+    void getNextAudioBlock (const juce::AudioSourceChannelInfo& bufferToFill) override;
     
     void releaseResources() override;
     
     //==============================================================================
     
-    void handleIncomingMidiMessage(MidiInput *source, const MidiMessage& message) override;
+    void handleIncomingMidiMessage(juce::MidiInput *source, const juce::MidiMessage& message) override;
     
-    void newCursorCreated (int index, String& name, float averageBrightness);
+    //==============================================================================
+    
+    void newCursorCreated (int index, juce::String& name, float averageBrightness);
     
 private:
     
