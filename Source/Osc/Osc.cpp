@@ -16,7 +16,7 @@ using namespace juce;
 //==============================================================================
 Osc::Osc()
 {
-    const int port = 9001;
+    const int port = 8327;
     
     if(!connect(port))
     {
@@ -26,7 +26,7 @@ Osc::Osc()
     {
         DBG("Connecting to port " << port);
     }
-    addListener(this, "/scanDrum/test/");
+    addListener(this);
     
     // Sending port --> 8327
     

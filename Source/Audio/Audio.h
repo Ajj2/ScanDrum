@@ -18,9 +18,9 @@
 #include "Mixer.h"
 #include "AudioUtils.h"
 
-class Audio : public AudioAppComponent,
-              public MidiInputCallback,
-              public ActionBroadcaster
+class Audio : public juce::AudioAppComponent,
+              public juce::MidiInputCallback,
+              public juce::ActionBroadcaster
 {
 public:
     

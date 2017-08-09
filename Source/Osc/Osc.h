@@ -17,7 +17,7 @@
 /*
 */
 class Osc   :   private juce::OSCReceiver,
-                private juce::OSCReceiver::ListenerWithOSCAddress<juce::OSCReceiver::MessageLoopCallback>
+                private juce::OSCReceiver::Listener<juce::OSCReceiver::RealtimeCallback>
 {
 public:
     ~Osc();
